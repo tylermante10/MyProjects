@@ -1,0 +1,67 @@
+-- INSERT & DELETE Syntax
+
+-- Book Insert:
+
+INSERT INTO Book_Info(ISBN, Title, AUTHOR, PRICE)
+Values(9780060244195,"The Giving Tree", "Shel Silverstein", 20);
+
+INSERT INTO Book_Background(PUBLISHER_ID, PUBLISHER, CATEGORY, YEAR)
+VALUES (63, "HarperCollins", "Childrens" , 1964);
+
+INSERT INTO Book_Stock(TITLE, STORE_ID, STOCK)
+VALUES( "The Giving Tree" , 30812, 19);
+
+INSERT INTO Publisher(PUBLISHER_ID, NAME, PHONE, EMAIL)
+VALUES(63, "HarperCollins", "330-410-8907", "HarperCollins”@gmail.com”");
+
+-- Book Delete
+
+Delete:
+DELETE FROM Book_Info
+WHERE ISBN = 9780060244194;
+
+DELETE FROM Book_Background
+WHERE ISBN = NULL;
+
+DELETE FROM Book_Stock
+WHERE ISBN = NULL;
+
+-- Publisher Insert 
+
+	Insert:
+INSERT INTO Publisher(PUBLISHER_ID, NAME, PHONE, EMAIL)
+VALUES(63, Frediani Printing, 4127243309, fredianiprinting@gmail.com);
+
+-- Publisher Delete 
+
+DELETE FROM Publisher
+WHERE PUBLISHER_ID = 63;
+
+-- Author Insert 
+
+Insert:
+CREATE TABLE AUTHOR
+(AUTHOR_ID CHAR(8)
+FIRST VARCHAR(20)
+LAST VARCHAR(20) );
+INSERT INTO Author(FIRST, LAST)
+VALUES(12312323, ‘Colin’, ‘Cowherd’)
+
+-- Author Delete:
+DELETE FROM Author
+WHERE Author_ID = 12312323)
+
+
+-- Customer Insert 
+
+Insert:
+INSERT INTO Customer(CUSTOMER_ID, ADDRESS, DOB, PHONE, FIRST, LAST)
+VALUES (8134091, ‘1667 Percheron Street’, “04-13-3004”, “412-724-1234”, “Noah”, “Blayney”)
+INSERT INTO Customer_CC_INFO(CardNum)
+VALUES(4430440090612386)
+
+-- Customer Delete:
+DELETE FROM Customer
+WHERE CUSTOMER_ID = 8134091
+DELETE FROM Customer_CC_Info
+WHERE CUSTOMER_ID = null
