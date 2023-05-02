@@ -1,5 +1,5 @@
 Final Project.pdf
-# # Part One-Section One Database Description Page 3
+##Section One Database Description Page 3
 # ER-Model Page 4
 # Relational Schema Page 5
 # Functional Dependencies Page 7
@@ -9,13 +9,13 @@ Final Project.pdf
 # Three Sample Transactions Page 12
 
 
-# Part One-Section Two User Manual Page 14
+##Section Two User Manual Page 14
 # Sample SQL Queries Page 15-20
 # Table Descriptions Page 21-23
 # INSERT & DELETE Syntax Page 24-25
 
 
-# Part One-Section Three Graded Checkpoint Documents Page 26
+##Section Three Graded Checkpoint Documents Page 26
 # Checkpoint One Page 27
 # Checkpoint Two Page 28-29
 # Checkpoint Three Page 30-31
