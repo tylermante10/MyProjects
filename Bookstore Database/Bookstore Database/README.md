@@ -1,4 +1,3 @@
-Final Project.pdf
 ##Section One Database Description Page 3
 # ER-Model Page 4
 # Relational Schema Page 5
