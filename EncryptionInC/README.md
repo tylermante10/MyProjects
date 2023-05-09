@@ -21,23 +21,23 @@ Constants 6,7,8, which tend to be significant constants used throughout indexing
 ## decryption.c
 New file 
 
-##encrypt.c
+## encrypt.c
 Main functionality of command line interference/ handling encryption function call
 
-##encrypt_command_line.c 
+## encrypt_command_line.c 
 Useful intputs to command line on what to enter to see encryption described 
 
-##encrypt.o
+## encrypt.o
 Output file from makefile
 
-##flipBits.h
+## flipBits.h
 header file in encryptC that contains the encryption functionality, given an array 
 
-##makefile
+## makefile
 build executable 
 
-##output.txt
+## output.txt
 Was used for file redirection to test encryption.c
 
-##wf.txt
+## wf.txt
 Sample input text (a favorite song of mine)
