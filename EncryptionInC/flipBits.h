@@ -18,7 +18,7 @@ char* flipArr(unsigned char* raw){
                 encrypt_bit = encrypt_bit << 1;
 		/* XOR result stored in operand variable */
                 operand = c ^ encrypt_bit;
-		/* If the msb is > 128, there is a difference in bits, so we encrypt*/
+		/* If operand is > 128, there is a difference in msbs, so we encrypt*/
                 if(operand > 128){
                         c = c ^(1 << 7);
 			/* Cast necessary to store as a char */
