@@ -1,33 +1,13 @@
 #Tyler Mante
 
-# Makefile for lab 1-4.
+# Makefile 
 
-#change the last dependency for each new lab
-all:  tags headers encrypt printAll flipBits
+#change the last dependency if necessary
+all:  tags headers 
 
-#this entry has to change for lab 2 - 4
-# NEVER compile .c files with this rule - it lacks needed compile time flags
-# There is an entry below that turns .c files into .o filest
-sahilTime: sahilTime.o
-	gcc -g -o $@ $^
-testHead: testHead.o
-	gcc -g -o $@ $^
-encrypt: encrypt.o 
-	gcc -g -o $@ $^  
-printAll: printAll.o
-	gcc -g -o $@ $^
-flipBits: flipBits.o
-	gcc -g -o $@ $^
-#this is where you create an entry to build your zip file
-#it will also update with new labs
-
-
-
-#this entry stays for C code labs
 tags: *.c
 	ctags -R .
 
-# this entry stays for C code labs
 headers: *.c tags
 	headers.sh
 

@@ -10,10 +10,11 @@ int main(){
  *         * i,j: index variables
  *         * ch: individual character to check
  *         */
-        unsigned char* input_chars = malloc(BYTE_SIZE * sizeof(unsigned char));
-        char* flippedBack = malloc(LAST_BIT * sizeof(char));
+        unsigned char* input_chars = malloc(LAST_BIT * sizeof(unsigned char));
+        char* flippedBack = malloc(BYTE_SIZE * sizeof(char));
         int i,j= 0;
-        int ch;
+        int ch, num;
+	printf("BBBBBBHello World\n");
         while(ch != EOF){
                 ch = getchar();
                 input_chars[i] = (char) ch;
