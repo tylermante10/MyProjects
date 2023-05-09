@@ -21,8 +21,6 @@ char* flipArr(unsigned char* raw){
 		/* If operand is > 128, there is a difference in msbs, so we encrypt*/
                 if(operand > 128){
                         c = c ^(1 << 7);
-			/* Cast necessary to store as a char */
-                        c = (char) c;	
                         flipped_arr[i] = c;
                 } /*Otherwise, the character stays the same*/
                 else{
