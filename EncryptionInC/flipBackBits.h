@@ -11,14 +11,12 @@ char* flipBackArr(unsigned char* raw){
         char c;
         unsigned char  operand, encrypt_bit;
         /*Initialize to zero */
-        encrypt_bit = raw[LAST_ADJUSTED_BIT_IDX];
+        encrypt_bit = 0;
         for(i = LAST_ADJUSTED_BIT_IDX; i>= 0; i--){
                 c  = raw[i];
-                /* XOR result stored in operand variable */
-                operand = c ^ encrypt_bit;
                 /* If the msb is > 128, the next bit is a 1*/
                 if(operand > 128){
-                        c = c ^(1 << i);                      
+                        c = c ^(0 << 7);                      
                         flipped_arr[i] = c;
                 } /*Otherwise, the character stays the same*/
                 else{
