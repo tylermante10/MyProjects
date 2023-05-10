@@ -8,8 +8,7 @@
 char* flipArr(unsigned char* raw){
         char* flipped_arr = malloc(LAST_BIT * sizeof(char));
         int i,j = 0;
-	char c;
-        unsigned char  operand, encrypt_bit;
+        unsigned char  c, operand, encrypt_bit;
 	/* Take the last character of the input array */
         encrypt_bit = raw[LAST_BIT];
         for(i = LAST_ADJUSTED_BIT_IDX; i>= 0; i--){

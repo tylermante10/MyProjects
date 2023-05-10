@@ -6,23 +6,24 @@
  *   * @returns: flipped_arr- the new character array, adjusted via encryption scheme
  *    */
 char* flipBackArr(unsigned char* raw){
-        char* flipped_arr = malloc(LAST_BIT * sizeof(char));
+        char* flipped_arr = malloc(BYTE_SIZE * sizeof(char));
         int i,j = 0;
-        char c;
-        unsigned char  operand, encrypt_bit;
+        unsigned char  c, operand, encrypt_bit;
         /*Initialize to zero */
         encrypt_bit = 0;
         for(i = LAST_ADJUSTED_BIT_IDX; i>= 0; i--){
                 c  = raw[i];
                 /* If the msb is > 128, the next bit is a 1*/
-                if(operand > 128){
-                        c = c ^(0 << 7);                      
+                if(c > 128){
+			encrypt_bit = encrypt_bit ^ (1 << i);
+                        c = c ^(1 << 7);                      
                         flipped_arr[i] = c;
                 } /*Otherwise, the character stays the same*/
                 else{
                         flipped_arr[i] = c;
                 }
         }
+	flipped_arr[LAST_BIT] = encrypt_bit;
         return flipped_arr;
 }
 

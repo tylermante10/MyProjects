@@ -14,7 +14,6 @@ int main(){
         char* flippedBack = malloc(BYTE_SIZE * sizeof(char));
         int i,j= 0;
         int ch, num;
-	printf("BBBBBBHello World\n");
         while(ch != EOF){
                 ch = getchar();
                 input_chars[i] = (char) ch;
@@ -22,7 +21,7 @@ int main(){
                         flippedBack = flipBackArr(input_chars);
                         /* i incremented to zero in line 30 */
                         i=-1;
-                        while(j < LAST_BIT){
+                        while(j < BYTE_SIZE){
                                 putchar(flippedBack[j]);
                                 j++;
                         }
