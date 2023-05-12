@@ -15,10 +15,10 @@ int main(){
 	int i,j,remaining_chars = 0;
 	int encrypt_idx = 0;
 	int file_idx = 0;
-	int ch;
+	char ch;
 	while(ch != EOF){
 		ch = getchar();
-		input_chars[i] = (char) ch;
+		input_chars[i] = ch;
 		file_idx++;
 		if(i == LAST_BIT){
 		      	flipped = flipArr(input_chars);
@@ -33,13 +33,13 @@ int main(){
 		}
 		i++;	 
 	}
-/*	remaining_chars = file_idx - encrypt_idx;
+	remaining_chars = file_idx - encrypt_idx;
 	for (i =0; i< remaining_chars; i++){
-		ch = (int) input_chars[i];
+		ch = input_chars[i];
 		if(ch != EOF){
-			printf("New char is %c\n", ch);
+			putchar(ch);
 		}
 	}
-*/
+
 	return 0;
 }

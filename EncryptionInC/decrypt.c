@@ -12,15 +12,20 @@ int main(){
  *         */
         unsigned char* input_chars = malloc(LAST_BIT * sizeof(unsigned char));
         char* flippedBack = malloc(BYTE_SIZE * sizeof(char));
-        int i,j= 0;
-        int ch, num;
+        int i,j,remaining_chars = 0; 
+	int encrypt_idx = 0;
+        int file_idx = 0;
+        char ch;
+	printf("%d %d %d\n", remaining_chars, encrypt_idx, file_idx);
         while(ch != EOF){
                 ch = getchar();
-                input_chars[i] = (char) ch;
+                input_chars[i] = ch;
+		file_idx++;
                 if(i == LAST_ADJUSTED_BIT_IDX){
                         flippedBack = flipBackArr(input_chars);
                         /* i incremented to zero in line 30 */
                         i=-1;
+			encrypt_idx = encrypt_idx + 8;
                         while(j < BYTE_SIZE){
                                 putchar(flippedBack[j]);
                                 j++;
@@ -29,6 +34,15 @@ int main(){
                 }
                 i++;
         }
+        remaining_chars = file_idx - encrypt_idx;
+	printf("%d %d %d\n", remaining_chars, encrypt_idx, file_idx);
+        for (i =0; i< remaining_chars; i++){
+                ch = input_chars[i];
+                if(ch != EOF){
+                        putchar(ch);
+                }
+        }
+
         return 0;
 }
 
