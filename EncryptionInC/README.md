@@ -9,6 +9,16 @@ Then, to test functionality with any text file, (e.g. input.txt) run the command
 $ encrypt <input.txt> output.txt 
 ```
 ### This will encrypt the given input text, and write the digest to the output.txt file
+To view the encryption, either re-open the file output.txt or type "vim output.txt" to view in console
+```
+$ vim output.txt
+```
+To then decrypt the text back, type the following command to 1) decrypt the given message and 2) view the actual message:
+```
+$ decrypt <output.txt> back.txt
+$ vim back.txt
+```
+### This will decrypt the given input text, and write the translation of the digest to the back.txt file
 
 # File breakdown
 
