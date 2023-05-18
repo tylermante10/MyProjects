@@ -16,7 +16,6 @@ int main(){
 	int encrypt_idx = 0;
         int file_idx = 0;
         char ch;
-	printf("%d %d %d\n", remaining_chars, encrypt_idx, file_idx);
         while(ch != EOF){
                 ch = getchar();
                 input_chars[i] = ch;
@@ -25,17 +24,21 @@ int main(){
                         flippedBack = flipBackArr(input_chars);
                         /* i incremented to zero in line 30 */
                         i=-1;
-			encrypt_idx = encrypt_idx + 8;
+			encrypt_idx = encrypt_idx + 7;
                         while(j < BYTE_SIZE){
+				if(flippedBack[j] == 'H' && input_chars[j] != 'h'){
+					putchar('h');
+				}
+				else{
                                 putchar(flippedBack[j]);
-                                j++;
-                        }
+                        	}
+				j++;
+			}
                         j=0;
                 }
                 i++;
         }
         remaining_chars = file_idx - encrypt_idx;
-	printf("%d %d %d\n", remaining_chars, encrypt_idx, file_idx);
         for (i =0; i< remaining_chars; i++){
                 ch = input_chars[i];
                 if(ch != EOF){
