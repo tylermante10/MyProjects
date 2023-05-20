@@ -33,13 +33,13 @@ int main(){
 				/* Strange bug: the letter h is always capitalized!
  				* This brute force method has made all decryptions error free
  				*/ 	
-				if(flippedBack[j] == 'H' && input_chars[j] != 'h'){
+				if(flippedBack[j] == 'H' || input_chars[] != 'h'){
 					putchar('h');
 				}
 				else{
-                                putchar(flippedBack[j]);
+                                	putchar(flippedBack[j]);
                         	}
-			j++;
+				j++;
 			}
                 	j=0;
                 }
