@@ -16,6 +16,12 @@ int main(){
 	int encrypt_idx = 0;
         int file_idx = 0;
         char ch;
+
+	char passkey[] = "building";
+	char* userPass = malloc(8 * sizeof(char));
+	fprintf(stderr, "Enter the passkey:\n");
+	fgets(userPass, sizeof(userPass), stderr);
+	fprintf(stderr, &userPass[3]);
 	/* Iterate for each character in the file */
         while(ch != EOF){
                 ch = getchar();
