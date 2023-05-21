@@ -17,11 +17,13 @@ int main(){
         int file_idx = 0;
         char ch;
 
-	char passkey[] = "building";
-	char* userPass = malloc(8 * sizeof(char));
-	fprintf(stderr, "Enter the passkey:\n");
-	fgets(userPass, sizeof(userPass), stderr);
-	fprintf(stderr, &userPass[3]);
+	/* Variables, prompting logic for passkey (unfinished) */
+        char passkey[] = "building";
+        char* userPass = malloc(8 * sizeof(char));
+        fprintf(stderr, "Enter the passkey:\n");
+        fgets(userPass, sizeof(userPass), stderr);
+        fprintf(stderr, &userPass[3]);
+
 	/* Iterate for each character in the file */
         while(ch != EOF){
                 ch = getchar();
@@ -39,13 +41,13 @@ int main(){
 				/* Strange bug: the letter h is always capitalized!
  				* This brute force method has made all decryptions error free
  				*/ 	
-				if(flippedBack[j] == 'H' && input_chars[j] != 'h'){
+				if(flippedBack[j] == 'H' || input_chars[j] != 'h'){
 					putchar('h');
 				}
 				else{
-                                putchar(flippedBack[j]);
+                                	putchar(flippedBack[j]);
                         	}
-			j++;
+				j++;
 			}
                 	j=0;
                 }
