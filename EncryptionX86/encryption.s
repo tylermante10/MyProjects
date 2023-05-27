@@ -1,12 +1,14 @@
 #@Author tylermante10
 .file "encryption.s"
 .section .rodata
-.output:
-        .string "Enter the string:\n"
-.input:
-	.string "%s"
+# Optional
+
+# .output:
+#        .string "Enter the string:\n"
+#.input:
+#	.string "%s"
 .format:
-	.string "%19s"
+	.string "%8s"
 .final:
 	.string "%s"
 # .next:
@@ -22,16 +24,13 @@ main:
 	pushq %rbp
         movq %rsp, %rbp # Stack pointer is now set up
 
-	subq $8, %rsp
+	subq $8, %rsp 	# Array allocation
 	
         pushq  %r12      #r12 is going to be index
         pushq  %r13      #r13 will point to beginning of array
 
 	movq %rbp, %r13
 
-	movq $.output , %rdi
-        xorq %rax, %rax
-        call printf
 	movq $.format, %rdi
 	movq $x, %rsi
         xorq %rax , %rax
