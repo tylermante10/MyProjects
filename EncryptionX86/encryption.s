@@ -2,71 +2,49 @@
 .file "encryption.s"
 .section .rodata
 .output:
-        .byte 'c'
+        .string "Enter the string:\n"
+.input:
+	.string "%s"
+.format:
+	.string "%19s"
+.final:
+	.string "%s"
 # .next:
 #	.byte 'o' 
 .data
+x:
+	.quad 0
 #required declaratives
 .globl main
         .type main, @function
 .text
 main:
-        movw %sp, %bp # Stack pointer is now set up
+	pushq %rbp
+        movq %rsp, %rbp # Stack pointer is now set up
 
-        pushw  %r12w      #r12 is going to be index
-        pushw  %r13w      #r13 will point to beginning of array
-
-        xorw %ax, %ax
-        call getchar
-        movw %ax, %di
-        xorw %ax , %ax
-        call putchar
-	ret
+	subq $8, %rsp
 	
-        # Allocating space for the array
-        #movq %rsp, %rdi # rdi is at base of array
-        #subq $8, %rsp  # stack pointer has been moved down
+        pushq  %r12      #r12 is going to be index
+        pushq  %r13      #r13 will point to beginning of array
 
-        # Set up counter index
-        #movq $0, %rsi
-	
-	#movq $.next, (%rdi, %rsi, 1) 
-	#incq %rsi	
-	#movq (%rdi, %rsi, 1), %rdi
-	#movq %rdi, %r13
-	
-	#xorq %rax, %rax
-	#call printf
-	
+	movq %rbp, %r13
 
-        # Move all string addresses onto array: MODIFY HERE
-        #movq $.lineOne, (%rdi,%rsi,8)   # rdi[0] = line 1
-        #incq %rsi
-        #movq $.lineTwo, (%rdi,%rsi,8)   # rdi[1] = line 2
-        #incq %rsi
-        #movq $.lineThree, (%rdi,%rsi,8) # rdi[2] = line 3
-        #incq %rsi
-        #movq $.lineFour, (%rdi,%rsi,8)  # rdi[3] = line 4
-        #incq %rsi
-        #movq $.lineFive, (%rdi,%rsi,8)  # rdi[4] = line 5
-        #incq %rsi
-        # ADD INTO ARRAY HERE
-        #movq %rdi, %r13
+	movq $.output , %rdi
+        xorq %rax, %rax
+        call printf
+	movq $.format, %rdi
+	movq $x, %rsi
+        xorq %rax , %rax
+        call scanf
 
-        # xorq %rax, %rax                 #Clear rax before call to short
-        # Calling Short: rdi is array, rsi is 5
-        #call short
-        #movq %rax, %r12                 # rax should be 3 here
+	movq $x, %rsi
+	movq $.final, %rdi
+	xorq %rax, %rax
+	call printf
 
-        # Set up call to print shortest string
-        #movq $.output, %rdi
-        #movq (%r13,%r12,8), %rsi
-        #xorq %rax, %rax
-        #call printf
-        # Exiting Stuff
-End:
-        popw %r13w
-        popw %r12w
+	xorq %rax, %rax
+        popq %r13
+        popq %r12
         leave
         ret
 .size main, .-main
