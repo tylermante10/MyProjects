@@ -39,28 +39,31 @@ main:
 	movq $input_chars, %rsi
         xorq %rax , %rax
         call scanf
+	
+	movq $input_chars, %r13
 #CONTINUE HERE	
 #Note: Look into data types in x86 (conversion of char -> int) (EOF -> -1) 
 	#While no characters in the array are EOF, continue
-#	movq $-1, %r12
-#Check:
-#	incq %r12
-#	cmpq $.EOF, (%r13, %r12, 1) # issue most likely here (comparing to EOF)
-#	je Exit
-#	movq (%r13, %r12, 1), %rsi
-#	movq $.final, %rdi
-#	xorq %rax, %rax
-#	call printf
-#	jmp Check
-#END TBD
-	#Grab the 8th character in the array and print it 
-	movq $7, %r12 	#The char we want is always at position 7
-	movq $input_chars, %r13
+	movq $-1, %r12
+Check:
+	incq %r12
+	cmpq $8, %r12 # issue most likely here (comparing to EOF)
+	je Exit
 	movq (%r13, %r12, 1), %rsi
 	movq $.final, %rdi
 	xorq %rax, %rax
-	call printf	
-	 
+	call printf
+	jmp Check
+#END TBD: 
+# Skips code below when uncommented
+	#Grab the 8th character in the array and print it 
+#	movq $7, %r12 	#The char we want is always at position 7
+#	movq $input_chars, %r13
+#	movq (%r13, %r12, 1), %rsi
+#	movq $.final, %rdi
+#	xorq %rax, %rax
+#	call printf	
+#Prints all inputted chars	 
 	#movq $x, %rsi
 	#movq $.final, %rdi
 	#xorq %rax, %rax
