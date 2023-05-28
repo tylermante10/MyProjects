@@ -11,11 +11,14 @@
 	.string "%8s"
 .final:
 	.string "%c"
-
+.EOF:
+	.string "EOF"
+.flipBit:
+	.int 7
 # .next:
 #	.byte 'o' 
 .data
-x:
+input_chars:
 	.quad 0
 #required declaratives
 .globl main
@@ -27,18 +30,32 @@ main:
 
 	subq $8, %rsp 	# Array allocation
 	
-        pushq  %r12      #r12 is going to be index
-        pushq  %r13      #r13 will point to beginning of array
-
+        pushq %r12      #r12 is going to be index
+        pushq %r13      #r13 will point to beginning of array
 	movq %rbp, %r13	 #r13 set up to arr[0]
 
+	# Scan the input for 8 chars at a time
 	movq $.format, %rdi
-	movq $x, %rsi
+	movq $input_chars, %rsi
         xorq %rax , %rax
         call scanf
-	
-	movq $7, %r12
-	movq $x, %r13
+#CONTINUE HERE	
+#Note: Look into data types in x86 (conversion of char -> int) (EOF -> -1) 
+	#While no characters in the array are EOF, continue
+#	movq $-1, %r12
+#Check:
+#	incq %r12
+#	cmpq $.EOF, (%r13, %r12, 1) # issue most likely here (comparing to EOF)
+#	je Exit
+#	movq (%r13, %r12, 1), %rsi
+#	movq $.final, %rdi
+#	xorq %rax, %rax
+#	call printf
+#	jmp Check
+#END TBD
+	#Grab the 8th character in the array and print it 
+	movq $7, %r12 	#The char we want is always at position 7
+	movq $input_chars, %r13
 	movq (%r13, %r12, 1), %rsi
 	movq $.final, %rdi
 	xorq %rax, %rax
@@ -48,7 +65,7 @@ main:
 	#movq $.final, %rdi
 	#xorq %rax, %rax
 	#call printf
-
+Exit:
         popq %r13
         popq %r12
         leave
