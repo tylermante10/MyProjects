@@ -1,21 +1,40 @@
 #@Author tylermante10
 .file "encryption.s"
 .section .rodata
-.output:
-        .byte 'c'
+# Optional
+
+# .output:
+#        .string "Enter the string:\n"
+#.input:
+#	.string "%s"
+.format:
+	.string "%8s"
+.final:
+	.string "%c"
+.EOF:
+	.string "EOF"
+.flipBit:
+	.int 7
 # .next:
 #	.byte 'o' 
 .data
+input_chars:
+	.quad 0
 #required declaratives
 .globl main
         .type main, @function
 .text
 main:
-        movw %sp, %bp # Stack pointer is now set up
+	pushq %rbp
+        movq %rsp, %rbp # Stack pointer is now set up
 
-        pushw  %r12w      #r12 is going to be index
-        pushw  %r13w      #r13 will point to beginning of array
+	subq $8, %rsp 	# Array allocation
+	
+        pushq %r12      #r12 is going to be index
+        pushq %r13      #r13 will point to beginning of array
+	movq %rbp, %r13	 #r13 set up to arr[0]
 
+<<<<<<< HEAD
         xorw %ax, %ax
         call getchar
         movw %ax, %di
@@ -34,39 +53,45 @@ main:
 	#incq %rsi	
 	#movq (%rdi, %rsi, 1), %rdi
 	#movq %rdi, %r13
+=======
+	# Scan the input for 8 chars at a time
+	movq $.format, %rdi
+	movq $input_chars, %rsi
+        xorq %rax , %rax
+        call scanf
+>>>>>>> db4c890a9efcfb3510d3d113dc7c4d8f74a2ed79
 	
+	movq $input_chars, %r13
+#CONTINUE HERE	
+#Note: Look into data types in x86 (conversion of char -> int) (EOF -> -1) 
+	#While no characters in the array are EOF, continue
+	movq $-1, %r12
+Check:
+	incq %r12
+	cmpq $8, %r12 # issue most likely here (comparing to EOF)
+	je Exit
+	movq (%r13, %r12, 1), %rsi
+	movq $.final, %rdi
+	xorq %rax, %rax
+	call printf
+	jmp Check
+#END TBD: 
+# Skips code below when uncommented
+	#Grab the 8th character in the array and print it 
+#	movq $7, %r12 	#The char we want is always at position 7
+#	movq $input_chars, %r13
+#	movq (%r13, %r12, 1), %rsi
+#	movq $.final, %rdi
+#	xorq %rax, %rax
+#	call printf	
+#Prints all inputted chars	 
+	#movq $x, %rsi
+	#movq $.final, %rdi
 	#xorq %rax, %rax
 	#call printf
-	
-
-        # Move all string addresses onto array: MODIFY HERE
-        #movq $.lineOne, (%rdi,%rsi,8)   # rdi[0] = line 1
-        #incq %rsi
-        #movq $.lineTwo, (%rdi,%rsi,8)   # rdi[1] = line 2
-        #incq %rsi
-        #movq $.lineThree, (%rdi,%rsi,8) # rdi[2] = line 3
-        #incq %rsi
-        #movq $.lineFour, (%rdi,%rsi,8)  # rdi[3] = line 4
-        #incq %rsi
-        #movq $.lineFive, (%rdi,%rsi,8)  # rdi[4] = line 5
-        #incq %rsi
-        # ADD INTO ARRAY HERE
-        #movq %rdi, %r13
-
-        # xorq %rax, %rax                 #Clear rax before call to short
-        # Calling Short: rdi is array, rsi is 5
-        #call short
-        #movq %rax, %r12                 # rax should be 3 here
-
-        # Set up call to print shortest string
-        #movq $.output, %rdi
-        #movq (%r13,%r12,8), %rsi
-        #xorq %rax, %rax
-        #call printf
-        # Exiting Stuff
-End:
-        popw %r13w
-        popw %r12w
+Exit:
+        popq %r13
+        popq %r12
         leave
         ret
 .size main, .-main
