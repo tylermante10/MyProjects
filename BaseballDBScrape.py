@@ -8,7 +8,7 @@ import urllib.request
 from pprint import pprint
  
 # for parsing all the tables present on the website
-from html_table_parser.parser import HTMLTableParser
+from html_table_parser import HTMLTableParser
  
 # for converting the parsed data in a pandas dataframe
 import pandas as pd
@@ -29,7 +29,6 @@ def url_get_contents(url):
 # defining the html contents of a URL.
 import sqlite3
 import openpyxl
-import xlsxwriter
 
 # dictionary to pull teams from user input. Web URL requires team abbreviation, user may not know exact abbreviation
 # NOTE: Several teams may result in 404 Error due to team not existing at requested year!
@@ -69,10 +68,10 @@ teams = [29]
 
 # Prompting user for number of teams and team names
 numTeams = int(input("How many teams will you be sampling data from?:\n"))
-s = input("Enter the first team name you'd like data tables on: (Ex: For Cleveland Guardians, type 'Guardians'):")
+s = input("Enter the first team name you'd like data tables on: (Ex: For Cleveland Guardians, type 'Guardians'):\n")
 
 # Insert the abbreviation of team name inputted (s) as first element of array
-teams[0] = Abrev[s]
+teams[0] = Abrev[s.lower()]
 
 # Can uncomment for console output :
 ##print(teams[0])
@@ -90,12 +89,12 @@ while(i < numTeams):
     i += 1
 
 ## Get range of years from user 
-minYear = int(input("Enter the first year of data range (form xxxx):\n"))
-maxYear = int(input("Enter the end year of data range (form xxxx):\n"))
+minYear = int(input("Enter the first year of data range (beginning from 1880)(form xxxx):\n"))
+maxYear = int(input("Enter the end year of data range (ending in 2022)(form xxxx):\n"))
 
 ## User input error accounting
 if(minYear < 1880 or minYear > 2022 or maxYear < 1880 or maxYear > 2022 or minYear > maxYear):
-    minYear = int(input("Range invalid. Please enter a valid first year: "))
+    minYear = int(input("Range invalid. Please enter two valid years: "))
     maxYear = int(input("End year: "))
 
 # Loops to obtain each year in specified range for each team
