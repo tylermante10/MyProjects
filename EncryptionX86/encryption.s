@@ -21,7 +21,7 @@ main:
         movw %ax, %di
         xorw %ax , %ax
         call putchar
-	ret
+
 	
         # Allocating space for the array
         #movq %rsp, %rdi # rdi is at base of array
