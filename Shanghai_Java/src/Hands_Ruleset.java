@@ -20,6 +20,7 @@ public final class Hands_Ruleset {
      *
      */
     private static int DECK_SIZE = 106;
+    private static int CARDS_PER_HAND = 11;
 
     /**
      * Private constructor so this utility class cannot be instantiated.
@@ -30,7 +31,7 @@ public final class Hands_Ruleset {
     /**
      * Creates a deck of 104 cards for Shanghai definition of cards
      *
-     * @return create_deck - the array filled by RNG
+     * @return suites_container- the array for suites
      */
     private static int[][] create_definition_deck() {
         /* Fill the deck */
@@ -70,7 +71,7 @@ public final class Hands_Ruleset {
         for (int i = 0; i < DECK_SIZE; i++) {
             int rng = random.nextInt(DECK_SIZE);
             if (seen[rng] == 0) {
-                if (rng == 1 || rng == 106) {
+                if (rng == 1 || rng == 105) {
                     deck[i] = 2000;
                 } else {
                     deck[i] = rng;
@@ -92,6 +93,33 @@ public final class Hands_Ruleset {
     }
 
     /**
+     *
+     * @param master_deck-
+     *            the deck to deal cards from
+     * @param num_players-
+     *            the number of players to deal cards to
+     * @return
+     */
+
+    public static int[][] deal_cards(int[] master_deck, int num_players) {
+        int[][] dealt_array = new int[num_players][master_deck.length
+                / num_players];
+        int ct = 0;
+        int card_index = 0;
+        int i = 0;
+        while (i < CARDS_PER_HAND) {
+            if (ct < num_players) {
+                dealt_array[ct][card_index] = master_deck[i++];
+                ct++;
+            }
+            card_index++;
+            ct = 0;
+
+        }
+        return dealt_array;
+    }
+
+    /**
      * SUIT DEFINITION: 0, 106 = Joker
      *
      * Spades: 1-26 Clubs: 27-54 Hearts: 55-78 Diamonds: 79-105
@@ -99,6 +127,22 @@ public final class Hands_Ruleset {
      *
      *
      */
+    public static String check_suit(int check) {
+        String suit = "";
+        if (check == 2000 || check == 0) {
+            suit = "Joker!";
+        } else if (check >= 0 && check <= 25) {
+            suit = "Spade";
+        } else if (check >= 26 && check <= 51) {
+            suit = "Club";
+        } else if (check >= 52 && check <= 77) {
+            suit = "Heart";
+        } else {
+            suit = "Diamond";
+        }
+        return suit;
+    }
+
     /**
      * Checks if the cards submitted during hand 6 are truly a set, or not
      *
@@ -118,20 +162,6 @@ public final class Hands_Ruleset {
 
     }
 
-//    /**
-//     * Put a short phrase describing the static method myMethod here.
-//     */
-//    private static void myMethod(int a) {
-//        /*
-//         * Put your code for myMethod here
-//         */
-//        int[] array = new int[a];
-//        for (int idx = 0; idx < a; idx++) {
-//            array[idx] = a + 6;
-//            System.out.printf("a is %d\n", array[idx]);
-//        }
-//    }
-
     /**
      * Main method.
      *
@@ -141,25 +171,12 @@ public final class Hands_Ruleset {
     public static void main(String[] args) {
         SimpleReader in = new SimpleReader1L();
         SimpleWriter out = new SimpleWriter1L();
-        /*
-         * Put your main program code here; it may call myMethod as shown
-         */
-//        int a = 3;
-//        int i = -6;
-//        while (i < a) {
-//            out.println("Hello World I am Tyler");
-//            i++;
-//        }
-//        myMethod(a);
         // TODO HERE: Make a map of rulesets
         Map<Integer, String> ruleMap = new Map1L<Integer, String>();
         ruleSet_Map_Definition(ruleMap);
 
         // Adding 2 decks for Shanghai
         int[] master_deck = create_shuffled_shanghai_deck();
-        for (int i = 0; i < master_deck.length; i++) {
-            System.out.printf("Card #%d: %d%n", i, master_deck[i]);
-        }
 
         // Suites Container Double array with suites
         int[][] suitesContainer = create_definition_deck();
@@ -173,12 +190,22 @@ public final class Hands_Ruleset {
         clubs[0] = 26;
         hearts[0] = 52;
         diamonds[0] = 78;
-        for (int j = 0; j < 26; j++) {
-            System.out.printf("Spade: %d%n", spades[j]);
-            System.out.printf("Club: %d%n", clubs[j]);
-            System.out.printf("Heart: %d%n", hearts[j]);
-            System.out.printf("Diamond: %d%n", diamonds[j]);
+
+        int[][] players = deal_cards(master_deck, 3);
+        int player_me = 1;
+        int check = 0;
+        for (int w = 0; w < players[1].length; w++) {
+            check = master_deck[w];
+            String suit = check_suit(check);
+            System.out.printf("Player 1 hand, card:%d " + suit + "\n", w);
         }
+// QA TEST BELOW
+//        for (int j = 0; j < 26; j++) {
+//            System.out.printf("Spade: %d%n", spades[j]);
+//            System.out.printf("Club: %d%n", clubs[j]);
+//            System.out.printf("Heart: %d%n", hearts[j]);
+//            System.out.printf("Diamond: %d%n", diamonds[j]);
+//        }
 
         /*
          * Close input and output streams
