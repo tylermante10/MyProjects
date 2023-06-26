@@ -133,7 +133,7 @@ public final class Hands_Ruleset {
     /**
      * Function is responsible for identifying a given card number, 0-106, and
      * it's suit according to this definition:
-     * 
+     *
      * SUIT DEFINITION: 0, 106 = Joker Spades: 1-26 Clubs: 27-54 Hearts: 55-78
      * Diamonds: 79-105
      *
@@ -155,6 +155,85 @@ public final class Hands_Ruleset {
             suit = "Diamond";
         }
         return suit;
+    }
+
+    /**
+     * Function determines the proper name of a card. I.e 26 = A of clubs
+     *
+     * @param card_num
+     * @return String card_type- the card is a number/type AND a suit
+     */
+    public static Map<Integer, String> card_map() {
+        String[] suites = new String[4];
+        suites[0] = "Spade";
+        suites[1] = "Club";
+        suites[2] = "Hearts";
+        suites[3] = "Diamonds";
+
+        Map<Integer, String> card_map = new Map1L<Integer, String>();
+        int suite_ct = 0;
+        int i = 0;
+        int card_key = (suite_ct * SUITES_PER_DECK) + i;
+        String suit = suites[suite_ct];
+        while (suite_ct < suites.length) {
+            suit = suites[suite_ct];
+            card_map.add(card_key, ("A of " + suit));
+            card_key++;
+            card_map.add(card_key, ("A of " + suit));
+            card_key++;
+            card_map.add(card_key, "2 of " + suit);
+            card_key++;
+            card_map.add(card_key, "3 of " + suit);
+            card_key++;
+            card_map.add(card_key, "4 of " + suit);
+            card_key++;
+            card_map.add(card_key, "5 of " + suit);
+            card_key++;
+            card_map.add(card_key, "6 of " + suit);
+            card_key++;
+            card_map.add(card_key, "7 of " + suit);
+            card_key++;
+            card_map.add(card_key, "8 of " + suit);
+            card_key++;
+            card_map.add(card_key, "9 of " + suit);
+            card_key++;
+            card_map.add(card_key, "10 of " + suit);
+            card_key++;
+            card_map.add(card_key, "J of " + suit);
+            card_key++;
+            card_map.add(card_key, "2 of " + suit);
+            card_key++;
+            card_map.add(card_key, "3 of " + suit);
+            card_key++;
+            card_map.add(card_key, "4 of " + suit);
+            card_key++;
+            card_map.add(card_key, "5 of " + suit);
+            card_key++;
+            card_map.add(card_key, "6 of " + suit);
+            card_key++;
+            card_map.add(card_key, "7 of " + suit);
+            card_key++;
+            card_map.add(card_key, "8 of " + suit);
+            card_key++;
+            card_map.add(card_key, "9 of " + suit);
+            card_key++;
+            card_map.add(card_key, "10 of " + suit);
+            card_key++;
+            card_map.add(card_key, "J of " + suit);
+            card_key++;
+            card_map.add(card_key, "Q of " + suit);
+            card_key++;
+            card_map.add(card_key, "Q of " + suit);
+            card_key++;
+            card_map.add(card_key, "K of " + suit);
+            card_key++;
+            card_map.add(card_key, "K of " + suit);
+            card_key++;
+            i++;
+//                System.out.printf("HERE %d%n", card_index);
+            suite_ct++;
+        }
+        return card_map;
     }
 
     /**
@@ -198,27 +277,42 @@ public final class Hands_Ruleset {
         int[] clubs = suitesContainer[1];
         int[] hearts = suitesContainer[2];
         int[] diamonds = suitesContainer[3];
+        clubs[0] = 26;
+        hearts[0] = 52;
+        diamonds[0] = 78;
+        for (int i = 0; i < suitesContainer[0].length; i++) {
+            System.out.printf("Spades[%d] of %d%n", i, spades[i]);
+            System.out.printf("Clubs[%d] of %d%n", i, clubs[i]);
+            System.out.printf("Hearts[%d] of %d%n", i, hearts[i]);
+            System.out.printf("Diamond[%d] of %d%n", i, diamonds[i]);
+
+        }
 
         // Debug to see if these are correct
         // ^- not correct- assigning proper first values for last 3
         clubs[0] = 26;
         hearts[0] = 52;
         diamonds[0] = 78;
-
+        // HUGE statements here... Making the array of cards for the table by...
+        // && Creating the defintion of numbers -> card
         int[][] players = deal_cards(master_deck, 3);
-        int player_me = 1;
+        Map<Integer, String> card_map = card_map();
+
+        int player_me = 0;
         int check = 0;
         // Make a function for this one line - as an option for users to sort their cards
         Arrays.sort(players[player_me]);
+        // Loops to show all players hands that the cards are shuffled but sorted for each array
         for (int j = 0; j < players.length; j++) {
             for (int k = 0; k < players[player_me].length; k++) {
                 check = players[player_me][k];
-                String suit = check_suit(check);
-                System.out.printf(
-                        "Player %d sorted hand, card:%d " + suit + " %d\n",
-                        j + 1, k + 1, check);
+                System.out.println("" + check);
+                String card = card_map.value(check);
+                System.out.printf("Player %d sorted hand, card:" + card + " \n",
+                        j + 1);
             }
         }
+
 // QA TEST BELOW
 //        for (int j = 0; j < 26; j++) {
 //            System.out.printf("Spade: %d%n", spades[j]);
