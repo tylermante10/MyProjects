@@ -280,13 +280,14 @@ public final class Hands_Ruleset {
         clubs[0] = 26;
         hearts[0] = 52;
         diamonds[0] = 78;
-        for (int i = 0; i < suitesContainer[0].length; i++) {
-            System.out.printf("Spades[%d] of %d%n", i, spades[i]);
-            System.out.printf("Clubs[%d] of %d%n", i, clubs[i]);
-            System.out.printf("Hearts[%d] of %d%n", i, hearts[i]);
-            System.out.printf("Diamond[%d] of %d%n", i, diamonds[i]);
-
-        }
+// Another QA test- each suit's initial number value
+//        for (int i = 0; i < suitesContainer[0].length; i++) {
+//            System.out.printf("Spades[%d] of %d%n", i, spades[i]);
+//            System.out.printf("Clubs[%d] of %d%n", i, clubs[i]);
+//            System.out.printf("Hearts[%d] of %d%n", i, hearts[i]);
+//            System.out.printf("Diamond[%d] of %d%n", i, diamonds[i]);
+//
+//        }
 
         // Debug to see if these are correct
         // ^- not correct- assigning proper first values for last 3
@@ -306,7 +307,6 @@ public final class Hands_Ruleset {
         for (int j = 0; j < players.length; j++) {
             for (int k = 0; k < players[player_me].length; k++) {
                 check = players[player_me][k];
-                System.out.println("" + check);
                 String card = card_map.value(check);
                 System.out.printf("Player %d sorted hand, card:" + card + " \n",
                         j + 1);
