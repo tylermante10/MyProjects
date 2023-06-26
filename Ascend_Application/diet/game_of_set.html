@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+  <script src="js/game.js" defer></script>
+  <title>The Game of Set: Reloaded</title>
+</head>
+
+<body>
+  <div class="grid-wrapper">
+    <header>
+      <div class="header-text">SET RELOADED</div>
+    </header>
+    <main>
+      <div class="hidden start-page">
+        <div class="scroll-box">
+          <h1>Instructions</h1>
+
+          <p>Each card has 1 of 3 colors (red, green, blue), 1 of 3 shape counts (1, 2, 3), 1 of 3 shadings (solid,
+            open, striped), and 1 of 3 shapes (oval, squiggle, diamond). A SET consists of 3 cards in which each of the
+            cards' features, looked at one-by-one, are the same on each card, or, are different on each card. All of the
+            features must separately satisfy this rule.</p>
+          <p>Players attempt to identify SETs from the cards on the table. If a SET was correctly identified, the SET
+            removed from the table and the player earns one point. The dealer (the computer) will then deal three cards
+            such that there are at least 12 cards on the table and there is at least one SET. Play continues until the
+            deck is depleted and there are no more possible SETs to be identified.</p>
+          <p>A set of cards can be selected from the table by clicking on them, and clicking the "Check" button will
+            verify if an actual SET has been identified or not. Clicking the "Get Hint" button will highlight two cards
+            that comprise a SET in yellow.</p>
+        </div>
+        <div class="start-buttons">
+          <button class="primary play-button">Play</button>
+        </div>
+      </div>
+      <div class="hidden game-page">
+        <div class="game-numbers">
+          <div>Cards Remaining: <span class="game-deck-size">0</span></div>
+          <div>Score: <span class="game-score">0</span></div>
+        </div>
+        <div class="game-cards-wrapper">
+          <div class="game-deck"></div>
+          <div class="game-table"></div>
+        </div>
+        <div class="game-buttons">
+          <button class="primary game-check-button" disabled>Check</button>
+          <button class="game-hint-button">Get Hint</button>
+          <button class="game-end-button">End Game</button>
+        </div>
+      </div>
+      <div class="hidden end-page">
+        <h1>Game Over!</h1>
+        <p>Your score: <span class="end-score">0</span></p>
+        <p>
+          Number of SETs identified: <span class="end-num-sets">0</span><br>
+          Number of non-SETs identified: <span class="end-num-non-sets">0</span>
+        </p>
+      </div>
+    </main>
+  </div>
+</body>
+
+</html>
