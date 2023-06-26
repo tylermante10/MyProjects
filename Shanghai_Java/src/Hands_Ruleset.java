@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Random;
 
 import components.map.Map;
@@ -15,12 +16,14 @@ import components.simplewriter.SimpleWriter1L;
  */
 public final class Hands_Ruleset {
     /**
-     * DECK_SIZE: A shanghai deck uses 2 decks (2 * 52 = 104), including two
-     * jokers (2000 as an INT)
+     * DECK_SIZE: A Shanghai Rummy deck uses 2 decks (2 * 52 = 104), including
+     * two jokers (0, 2000 as an INT)
      *
      */
     private static int DECK_SIZE = 106;
+    public static int DECK_IDX = 0;
     private static int CARDS_PER_HAND = 11;
+    public static int SUITES_PER_DECK = 26;
 
     /**
      * Private constructor so this utility class cannot be instantiated.
@@ -29,14 +32,14 @@ public final class Hands_Ruleset {
     }
 
     /**
-     * Creates a deck of 104 cards for Shanghai definition of cards
+     * Creates a deck of 104 cards to be matched for suites
      *
-     * @return suites_container- the array for suites
+     * @return suites_container- the array of sorted cards by suite
      */
     private static int[][] create_definition_deck() {
         /* Fill the deck */
-        int[][] suites_container = new int[4][26];
-        int[] suite = new int[26];
+        int[][] suites_container = new int[4][SUITES_PER_DECK];
+        int[] suite = new int[SUITES_PER_DECK];
         int container_num = 0;
         int idx = -1;
         boolean suits_filled = false;
@@ -93,6 +96,9 @@ public final class Hands_Ruleset {
     }
 
     /**
+     * Function for dealing cards to the players. Return an array the size of
+     * players, each with 11 cards (i.e. the number of cards to begin play
+     * with).
      *
      * @param master_deck-
      *            the deck to deal cards from
@@ -102,35 +108,43 @@ public final class Hands_Ruleset {
      */
 
     public static int[][] deal_cards(int[] master_deck, int num_players) {
-        int[][] dealt_array = new int[num_players][master_deck.length
-                / num_players];
+        int[][] dealt_array = new int[num_players][CARDS_PER_HAND];
         int ct = 0;
         int card_index = 0;
         int i = 0;
-        while (i < CARDS_PER_HAND) {
+        int dealers_amt = CARDS_PER_HAND * num_players;
+//        System.out.printf("Dealers amount %d", dealers_amt);
+        while (i < dealers_amt) {
             if (ct < num_players) {
-                dealt_array[ct][card_index] = master_deck[i++];
+                dealt_array[ct][card_index] = master_deck[i];
+                DECK_IDX++;
+                i++;
+//                System.out.printf("HERE %d%n", card_index);
                 ct++;
+            } else {
+                card_index++;
+                ct = 0;
             }
-            card_index++;
-            ct = 0;
 
         }
         return dealt_array;
     }
 
     /**
-     * SUIT DEFINITION: 0, 106 = Joker
+     * Function is responsible for identifying a given card number, 0-106, and
+     * it's suit according to this definition:
+     * 
+     * SUIT DEFINITION: 0, 106 = Joker Spades: 1-26 Clubs: 27-54 Hearts: 55-78
+     * Diamonds: 79-105
      *
-     * Spades: 1-26 Clubs: 27-54 Hearts: 55-78 Diamonds: 79-105
-     *
-     *
-     *
+     * @param check-
+     *            the integer card to be checked
+     * @return suit- the string description of suit
      */
     public static String check_suit(int check) {
         String suit = "";
         if (check == 2000 || check == 0) {
-            suit = "Joker!";
+            suit = "Joker";
         } else if (check >= 0 && check <= 25) {
             suit = "Spade";
         } else if (check >= 26 && check <= 51) {
@@ -194,10 +208,16 @@ public final class Hands_Ruleset {
         int[][] players = deal_cards(master_deck, 3);
         int player_me = 1;
         int check = 0;
-        for (int w = 0; w < players[1].length; w++) {
-            check = master_deck[w];
-            String suit = check_suit(check);
-            System.out.printf("Player 1 hand, card:%d " + suit + "\n", w);
+        // Make a function for this one line - as an option for users to sort their cards
+        Arrays.sort(players[player_me]);
+        for (int j = 0; j < players.length; j++) {
+            for (int k = 0; k < players[player_me].length; k++) {
+                check = players[player_me][k];
+                String suit = check_suit(check);
+                System.out.printf(
+                        "Player %d sorted hand, card:%d " + suit + " %d\n",
+                        j + 1, k + 1, check);
+            }
         }
 // QA TEST BELOW
 //        for (int j = 0; j < 26; j++) {
