@@ -175,6 +175,7 @@ public final class Hands_Ruleset_Last_Working {
         int i = 0;
         int card_key = (suite_ct * SUITES_PER_DECK) + i;
         String suit = suites[suite_ct];
+        card_map.add(2000, "Joker");
         while (suite_ct < suites.length) {
             suit = suites[suite_ct];
             card_map.add(card_key, ("A of " + suit));
