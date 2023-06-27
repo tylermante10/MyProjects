@@ -14,7 +14,7 @@ import components.simplewriter.SimpleWriter1L;
  * @author Tyler Mante
  *
  */
-public final class Hands_Ruleset {
+public final class Hands_Ruleset_Last_Working {
     /**
      * DECK_SIZE: A Shanghai Rummy deck uses 2 decks (2 * 52 = 104), including
      * two jokers (0, 2000 as an INT)
@@ -28,7 +28,7 @@ public final class Hands_Ruleset {
     /**
      * Private constructor so this utility class cannot be instantiated.
      */
-    private Hands_Ruleset() {
+    private Hands_Ruleset_Last_Working() {
     }
 
     /**
