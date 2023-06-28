@@ -257,27 +257,40 @@ public final class Hands_Ruleset_Movforward {
 
     }
 
-    public static boolean isSet(String[] set) {
+    /**
+     *
+     * @param set-
+     *            can be various
+     * @return
+     */
+    public static boolean isSet(char[] set) {
         boolean flag = false;
         int i = 0;
-        while (i < 3) {
+        if (set.length > 6) {
+            return true;
+        }
+        while (i < set.length) {
             System.out.println(set[i]);
-            int a = Integer.parseInt(set[i].toString());
+            int a = Character.getNumericValue(set[i]);
+            System.out.printf("%c", set[i]);
             i++;
-            int b = Integer.parseInt(set[i].toString());
-            System.out.println(set[i]);
+            int b = Character.getNumericValue(set[i]);
+            System.out.printf("%c", set[i]);
+
             i++;
-            int c = Integer.parseInt(set[i].toString());
-            System.out.println(set[i]);
+            int c = Character.getNumericValue(set[i]);
+            System.out.printf("%c", set[i]);
             i++;
-            if ((a == b) && (b == c) && (a == c)) {
-                flag = true;
-            } else {
-                flag = false;
+            {
+                if ((a == b) && (b == c) && (a == c)) {
+                    flag = true;
+                } else {
+                    flag = false;
+                }
             }
         }
 
-        return false;
+        return flag;
     }
 
     /**
@@ -333,15 +346,53 @@ public final class Hands_Ruleset_Movforward {
         Scanner input = new Scanner(System.in);
         System.out.print("Input 3 numbers:");
         String test = input.nextLine();
-        String set_to_test = test.substring(0, 3);
+        String set_to_test = test;
+        char elm_one;
+        char elm_two;
+        char elm_three;
+        if (test.length() == 3) {
+            elm_one = set_to_test.charAt(0);
+            elm_two = set_to_test.charAt(1);
+            elm_three = set_to_test.charAt(2);
+        } else if (test.length() == 6) {
+            int length = test.length();
+            set_to_test = test.substring(0, length);
+            if (test.equals("101010")) {
+
+            }
+        } else if (test.length() == 7) {
+            for (int i = 0; i < 7; i++) {
+                if (test.charAt(i) == 'o') {
+                    if (test.indexOf('o') == 1) {
+                        elm_one = set_to_test.charAt(5);
+                        elm_two = set_to_test.charAt(6);
+                        if (elm_one == elm_two) {
+                            elm_two = elm_one;
+                            elm_three = elm_one;
+                        } else if (elm_one == '1' && elm_two == '0') {
+                            elm_two = 10;
+                            elm_three = 10;
+                            elm_one = 10;
+                        }
+                    }
+                }
+            }
+        } else {
+            System.out.print("No. Input 3 numbers:");
+            test = input.nextLine();
+        }
         System.out.printf("System received %s", set_to_test);
-        String one = set_to_test.substring(0, 0);
-        String two = set_to_test.substring(1, 1);
-        String three = set_to_test.substring(2, 2);
-        String[] arr_set_objs = { one, two, three };
+        char one = set_to_test.charAt(0);
+        char two = set_to_test.charAt(1);
+        char three = set_to_test.charAt(2);
+        char[] arr_set_objs = { one, two, three };
 
         boolean is_approved_set = isSet(arr_set_objs);
-        System.out.printf("The boolean is %d", is_approved_set);
+        if (is_approved_set == true) {
+            System.out.printf("This is a set!\n");
+        } else {
+            System.out.println("You suck!");
+        }
 
         /*
          * Close input and output streams
