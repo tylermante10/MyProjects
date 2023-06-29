@@ -260,34 +260,62 @@ public final class Hands_Ruleset_Movforward {
     /**
      *
      * @param set-
-     *            can be various
+     *            the 3 cards to check
      * @return
      */
     public static boolean isSet(char[] set) {
         boolean flag = false;
+        boolean wild = false;
+        int a = 0;
+        int b = 0;
+        int c = 0;
+        int wild_num = 0;
         int i = 0;
         if (set.length > 6) {
             return true;
         }
         while (i < set.length) {
             System.out.println(set[i]);
-            int a = Character.getNumericValue(set[i]);
-            System.out.printf("%c", set[i]);
+            a = Character.getNumericValue(set[i]);
             i++;
-            int b = Character.getNumericValue(set[i]);
-            System.out.printf("%c", set[i]);
+            if (a == 2) {
+                wild = true;
+                wild_num = a;
+            }
+            b = Character.getNumericValue(set[i]);
+            if (b == 2) {
+                wild = true;
+                wild_num = b;
+            }
+            i++;
+            c = Character.getNumericValue(set[i]);
+            if (c == 2) {
+                wild = true;
+                wild_num = c;
+            }
+            i++;
+        }
 
-            i++;
-            int c = Character.getNumericValue(set[i]);
-            System.out.printf("%c", set[i]);
-            i++;
-            {
-                if ((a == b) && (b == c) && (a == c)) {
+        if ((a == b) && (b == c) && (a == c)) {
+            flag = true;
+        } else if (wild) {
+            if (wild_num == a) {
+                if (b == c) {
                     flag = true;
-                } else {
-                    flag = false;
                 }
             }
+            if (wild_num == b) {
+                if (a == c) {
+                    flag = true;
+                }
+            }
+            if (wild_num == c) {
+                if (b == a) {
+                    flag = true;
+                }
+            }
+        } else {
+            flag = false;
         }
 
         return flag;
