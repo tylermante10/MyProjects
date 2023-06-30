@@ -1,6 +1,5 @@
 import java.util.Arrays;
 import java.util.Random;
-import java.util.Scanner;
 
 import components.map.Map;
 import components.map.Map1L;
@@ -75,8 +74,10 @@ public final class Hands_Ruleset_Movforward {
         for (int i = 0; i < DECK_SIZE; i++) {
             int rng = random.nextInt(DECK_SIZE);
             if (seen[rng] == 0) {
-                if (rng == 1 || rng == 105) {
-                    deck[i] = 2000;
+                if (rng == 105) {
+                    deck[i] = 2;
+                } else if (rng == 106) {
+                    deck[i] = 2;
                 } else {
                     deck[i] = rng;
                     seen[rng] = 1;
@@ -144,7 +145,7 @@ public final class Hands_Ruleset_Movforward {
      */
     public static String check_suit(int check) {
         String suit = "";
-        if (check == 2000 || check == 0) {
+        if (check == 105 || check == 106) {
             suit = "Joker";
         } else if (check >= 0 && check <= 25) {
             suit = "Spade";
@@ -176,7 +177,8 @@ public final class Hands_Ruleset_Movforward {
         int i = 0;
         int card_key = (suite_ct * SUITES_PER_DECK) + i;
         String suit = suites[suite_ct];
-        card_map.add(2000, "Joker");
+        card_map.add(106, "Joker");
+        card_map.add(105, "Joker");
         while (suite_ct < suites.length) {
             suit = suites[suite_ct];
             card_map.add(card_key, ("A of " + suit));
@@ -257,11 +259,29 @@ public final class Hands_Ruleset_Movforward {
 
     }
 
+    public static void show_hands(int[][] players, int player_me,
+            Map<Integer, String> card_map) {
+        int check = 0;
+        // Make a function for this one line - as an option for users to sort their cards
+        Arrays.sort(players[player_me]);
+        // Loops to show all players hands that the cards are shuffled but sorted for each array
+        for (int j = 0; j < players.length; j++) {
+            for (int k = 0; k < players[player_me].length; k++) {
+                check = players[player_me][k];
+                String card = card_map.value(check);
+                System.out.print(card);
+                System.out.printf("Player %d sorted hand, card:" + card + " \n",
+                        j + 1);
+            }
+        }
+    }
+
     /**
+     * Function takes as input 3 cards to check for a set!
      *
      * @param set-
      *            the 3 cards to check
-     * @return
+     * @return flag- the result of the check
      */
     public static boolean isSet(char[] set) {
         boolean flag = false;
@@ -348,36 +368,41 @@ public final class Hands_Ruleset_Movforward {
         clubs[0] = 26;
         hearts[0] = 52;
         diamonds[0] = 78;
-        // HUGE statements here... Making the array of cards for the table by...
-        // && Creating the defintion of numbers -> card
-        int[][] players = deal_cards(master_deck, 3);
-        Map<Integer, String> card_map = card_map();
-        /*
-         * Get player me set up, check will sample just to show me all of the
-         * dealt cards
-         *
+
+        /**
+         * Make the players array
          */
         int player_me = 0;
-        int check = 0;
-        // Make a function for this one line - as an option for users to sort their cards
-        Arrays.sort(players[player_me]);
-        // Loops to show all players hands that the cards are shuffled but sorted for each array
-        for (int j = 0; j < players.length; j++) {
-            for (int k = 0; k < players[player_me].length; k++) {
-                check = players[player_me][k];
-                String card = card_map.value(check);
-                System.out.print(card);
-                System.out.printf("Player %d sorted hand, card:" + card + " \n",
-                        j + 1);
-            }
+        int players_total = 0;
+        System.out.println("Enter number of players [1] [2] [3] [4]");
+        players_total = in.nextInteger();
+        while (players_total < 0 || players_total > 4) {
+            System.out.println(
+                    "Enter one of these numbers players [1] [2] [3] [4] and [0] to quit");
+            players_total = in.nextInteger();
         }
-        Scanner input = new Scanner(System.in);
-        System.out.print("Input 3 numbers:");
-        String test = input.nextLine();
+        // HUGE statements here... Making the array of cards for the table by...
+        // Creating the defintion of numbers -> card
+        // Showing the hands all dealt out
+        int[][] players = deal_cards(master_deck, players_total);
+        Map<Integer, String> card_map = card_map();
+        show_hands(players, player_me, card_map);
+
+        /*
+         * Get player me set up- input the cards they have as a number
+         */
+//        System.out.printf(
+//                "Player %d, Input your selection as a single number:\n",
+//                player_me + 1);
+//        System.out.printf("[1] Put down [2] Discard%n");
+        String test = in.nextLine();
         String set_to_test = test;
-        char elm_one;
-        char elm_two;
-        char elm_three;
+        if (test.charAt(0) == 1) {
+            System.out.println("Enter set 1: ");
+        }
+        char elm_one = ' ';
+        char elm_two = ' ';
+        char elm_three = ' ';
         if (test.length() == 3) {
             elm_one = set_to_test.charAt(0);
             elm_two = set_to_test.charAt(1);
@@ -407,17 +432,15 @@ public final class Hands_Ruleset_Movforward {
             }
         } else {
             System.out.print("No. Input 3 numbers:");
-            test = input.nextLine();
+            test = in.nextLine();
         }
+
         System.out.printf("System received %s", set_to_test);
-        char one = set_to_test.charAt(0);
-        char two = set_to_test.charAt(1);
-        char three = set_to_test.charAt(2);
-        char[] arr_set_objs = { one, two, three };
+        char[] arr_set_objs = { elm_one, elm_two, elm_three };
 
         boolean is_approved_set = isSet(arr_set_objs);
         if (is_approved_set == true) {
-            System.out.printf("This is a set!\n");
+            System.out.printf("This is a set!%n");
         } else {
             System.out.println("You suck!");
         }
@@ -425,7 +448,6 @@ public final class Hands_Ruleset_Movforward {
         /*
          * Close input and output streams
          */
-        input.close();
         in.close();
         out.close();
     }
