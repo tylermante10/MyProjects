@@ -413,7 +413,7 @@ public final class Hands_Ruleset_Movforward {
         String set_to_test = test;
         if (test.charAt(0) == '1') {
             System.out.print(
-                    "Enter set 1 (enter 3 of the card #s making up your set: ");
+                    "Enter set 1 (enter 3 of the card #s making up your set): ");
             test = in.nextLine();
             System.out.printf("Test = %s", test);
             set_to_test = test;
