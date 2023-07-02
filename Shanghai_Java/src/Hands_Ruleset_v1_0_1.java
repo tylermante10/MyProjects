@@ -14,7 +14,7 @@ import components.simplewriter.SimpleWriter1L;
  * @author Tyler Mante
  *
  */
-public final class Hands_Ruleset_Last_Working {
+public final class Hands_Ruleset_v1_0_1 {
     /**
      * DECK_SIZE: A Shanghai Rummy deck uses 2 decks (2 * 52 = 104), including
      * two jokers (0, 2000 as an INT)
@@ -28,7 +28,7 @@ public final class Hands_Ruleset_Last_Working {
     /**
      * Private constructor so this utility class cannot be instantiated.
      */
-    private Hands_Ruleset_Last_Working() {
+    private Hands_Ruleset_v1_0_1() {
     }
 
     /**
@@ -74,8 +74,10 @@ public final class Hands_Ruleset_Last_Working {
         for (int i = 0; i < DECK_SIZE; i++) {
             int rng = random.nextInt(DECK_SIZE);
             if (seen[rng] == 0) {
-                if (rng == 1 || rng == 105) {
-                    deck[i] = 2000;
+                if (rng == 105) {
+                    deck[i] = 2;
+                } else if (rng == 106) {
+                    deck[i] = 2;
                 } else {
                     deck[i] = rng;
                     seen[rng] = 1;
@@ -143,7 +145,7 @@ public final class Hands_Ruleset_Last_Working {
      */
     public static String check_suit(int check) {
         String suit = "";
-        if (check == 2000 || check == 0) {
+        if (check == 105 || check == 106) {
             suit = "Joker";
         } else if (check >= 0 && check <= 25) {
             suit = "Spade";
@@ -175,7 +177,8 @@ public final class Hands_Ruleset_Last_Working {
         int i = 0;
         int card_key = (suite_ct * SUITES_PER_DECK) + i;
         String suit = suites[suite_ct];
-        card_map.add(2000, "Joker");
+        card_map.add(106, "Joker");
+        card_map.add(105, "Joker");
         while (suite_ct < suites.length) {
             suit = suites[suite_ct];
             card_map.add(card_key, ("A of " + suit));
@@ -256,6 +259,88 @@ public final class Hands_Ruleset_Last_Working {
 
     }
 
+    public static void show_hands(int[][] players, int player_me,
+            Map<Integer, String> card_map) {
+        int check = 0;
+        // Make a function for this one line - as an option for users to sort their cards
+        Arrays.sort(players[player_me]);
+        // Loops to show all players hands that the cards are shuffled but sorted for each array
+        for (int j = 0; j < players.length; j++) {
+            for (int k = 0; k < players[player_me].length; k++) {
+                check = players[player_me][k];
+                String card = card_map.value(check);
+                System.out.print(card);
+                System.out.printf("Player %d sorted hand, card:" + card + " \n",
+                        j + 1);
+            }
+        }
+    }
+
+    /**
+     * Function takes as input 3 cards to check for a set!
+     *
+     * @param set-
+     *            the 3 cards to check
+     * @return flag- the result of the check
+     */
+    public static boolean isSet(char[] set) {
+        boolean flag = false;
+        boolean wild = false;
+        int a = 0;
+        int b = 0;
+        int c = 0;
+        int wild_num = 0;
+        int i = 0;
+        if (set.length > 6) {
+            return true;
+        }
+        while (i < set.length) {
+            System.out.println(set[i]);
+            a = Character.getNumericValue(set[i]);
+            i++;
+            if (a == 2) {
+                wild = true;
+                wild_num = a;
+            }
+            b = Character.getNumericValue(set[i]);
+            if (b == 2) {
+                wild = true;
+                wild_num = b;
+            }
+            i++;
+            c = Character.getNumericValue(set[i]);
+            if (c == 2) {
+                wild = true;
+                wild_num = c;
+            }
+            i++;
+        }
+
+        if ((a == b) && (b == c) && (a == c)) {
+            flag = true;
+        } else if (wild) {
+            if (wild_num == a) {
+                if (b == c) {
+                    flag = true;
+                }
+            }
+            if (wild_num == b) {
+                if (a == c) {
+                    flag = true;
+                }
+            }
+            if (wild_num == c) {
+                if (b == a) {
+                    flag = true;
+                }
+            }
+        } else {
+            flag = false;
+        }
+
+        return flag;
+    }
+
     /**
      * Main method.
      *
@@ -268,7 +353,9 @@ public final class Hands_Ruleset_Last_Working {
         // TODO HERE: Make a map of rulesets
         Map<Integer, String> ruleMap = new Map1L<Integer, String>();
         ruleSet_Map_Definition(ruleMap);
-
+        /**
+         * Deck declaration. Yes, I'm blue commenting in main!
+         */
         // Adding 2 decks for Shanghai
         int[] master_deck = create_shuffled_shanghai_deck();
 
@@ -281,46 +368,82 @@ public final class Hands_Ruleset_Last_Working {
         clubs[0] = 26;
         hearts[0] = 52;
         diamonds[0] = 78;
-// Another QA test- each suit's initial number value
-//        for (int i = 0; i < suitesContainer[0].length; i++) {
-//            System.out.printf("Spades[%d] of %d%n", i, spades[i]);
-//            System.out.printf("Clubs[%d] of %d%n", i, clubs[i]);
-//            System.out.printf("Hearts[%d] of %d%n", i, hearts[i]);
-//            System.out.printf("Diamond[%d] of %d%n", i, diamonds[i]);
-//
-//        }
 
-        // Debug to see if these are correct
-        // ^- not correct- assigning proper first values for last 3
-        clubs[0] = 26;
-        hearts[0] = 52;
-        diamonds[0] = 78;
-        // HUGE statements here... Making the array of cards for the table by...
-        // && Creating the defintion of numbers -> card
-        int[][] players = deal_cards(master_deck, 3);
-        Map<Integer, String> card_map = card_map();
-
+        /**
+         * Make the players array
+         */
         int player_me = 0;
-        int check = 0;
-        // Make a function for this one line - as an option for users to sort their cards
-        Arrays.sort(players[player_me]);
-        // Loops to show all players hands that the cards are shuffled but sorted for each array
-        for (int j = 0; j < players.length; j++) {
-            for (int k = 0; k < players[player_me].length; k++) {
-                check = players[player_me][k];
-                String card = card_map.value(check);
-                System.out.printf("Player %d sorted hand, card:" + card + " \n",
-                        j + 1);
+        int players_total = 0;
+        System.out.println("Enter number of players [1] [2] [3] [4]");
+        players_total = in.nextInteger();
+        while (players_total < 0 || players_total > 4) {
+            System.out.println(
+                    "Enter one of these numbers players [1] [2] [3] [4] and [0] to quit");
+            players_total = in.nextInteger();
+        }
+        // HUGE statements here... Making the array of cards for the table by...
+        // Creating the defintion of numbers -> card
+        // Showing the hands all dealt out
+        int[][] players = deal_cards(master_deck, players_total);
+        Map<Integer, String> card_map = card_map();
+        show_hands(players, player_me, card_map);
+
+        /*
+         * Get player me set up- input the cards they have as a number
+         */
+//        System.out.printf(
+//                "Player %d, Input your selection as a single number:\n",
+//                player_me + 1);
+//        System.out.printf("[1] Put down [2] Discard%n");
+        String test = in.nextLine();
+        String set_to_test = test;
+        if (test.charAt(0) == 1) {
+            System.out.println("Enter set 1: ");
+        }
+        char elm_one = ' ';
+        char elm_two = ' ';
+        char elm_three = ' ';
+        if (test.length() == 3) {
+            elm_one = set_to_test.charAt(0);
+            elm_two = set_to_test.charAt(1);
+            elm_three = set_to_test.charAt(2);
+        } else if (test.length() == 6) {
+            int length = test.length();
+            set_to_test = test.substring(0, length);
+            if (test.equals("101010")) {
+
             }
+        } else if (test.length() == 7) {
+            for (int i = 0; i < 7; i++) {
+                if (test.charAt(i) == 'o') {
+                    if (test.indexOf('o') == 1) {
+                        elm_one = set_to_test.charAt(5);
+                        elm_two = set_to_test.charAt(6);
+                        if (elm_one == elm_two) {
+                            elm_two = elm_one;
+                            elm_three = elm_one;
+                        } else if (elm_one == '1' && elm_two == '0') {
+                            elm_two = 10;
+                            elm_three = 10;
+                            elm_one = 10;
+                        }
+                    }
+                }
+            }
+        } else {
+            System.out.print("No. Input 3 numbers:");
+            test = in.nextLine();
         }
 
-// QA TEST BELOW
-//        for (int j = 0; j < 26; j++) {
-//            System.out.printf("Spade: %d%n", spades[j]);
-//            System.out.printf("Club: %d%n", clubs[j]);
-//            System.out.printf("Heart: %d%n", hearts[j]);
-//            System.out.printf("Diamond: %d%n", diamonds[j]);
-//        }
+        System.out.printf("System received %s", set_to_test);
+        char[] arr_set_objs = { elm_one, elm_two, elm_three };
+
+        boolean is_approved_set = isSet(arr_set_objs);
+        if (is_approved_set == true) {
+            System.out.printf("This is a set!%n");
+        } else {
+            System.out.println("You suck!");
+        }
 
         /*
          * Close input and output streams
@@ -330,3 +453,19 @@ public final class Hands_Ruleset_Last_Working {
     }
 
 }
+//Another QA test- each suit's initial number value
+//for (int i = 0; i < suitesContainer[0].length; i++) {
+//  System.out.printf("Spades[%d] of %d%n", i, spades[i]);
+//  System.out.printf("Clubs[%d] of %d%n", i, clubs[i]);
+//  System.out.printf("Hearts[%d] of %d%n", i, hearts[i]);
+//  System.out.printf("Diamond[%d] of %d%n", i, diamonds[i]);
+//
+//}
+
+//QA TEST BELOW
+//for (int j = 0; j < 26; j++) {
+//  System.out.printf("Spade: %d%n", spades[j]);
+//  System.out.printf("Club: %d%n", clubs[j]);
+//  System.out.printf("Heart: %d%n", hearts[j]);
+//  System.out.printf("Diamond: %d%n", diamonds[j]);
+//}
