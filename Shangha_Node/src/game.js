@@ -19,7 +19,7 @@
  * Constants: SUITES, NUMBERS, 
  * 
 */
-class Create_defintion_deck_deck{
+class Create_shuffled_shanghai_deck{
     static SUITES = ['Spades', 'Clubs', 'Hearts', 'Diamonds'];
     static Values = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J' , 'Q', 'K'];
 
@@ -42,9 +42,10 @@ class Create_defintion_deck_deck{
     }
 
 
-
+/** Sample code for creating a card object in HTML (create element)
+ * 
+ */
 let imageElt = document.createElement('img');
-      imageElt.src = `svg_playing_cards/fronts/-${this.suite}-${this.shading}-${this.shape}.svg`;
-      imageElt.alt = `${this.number} ${this.color} ${this.shading} ${this.shape}`;
+      imageElt.src = `svg_playing_cards/fronts/${this.SUITES[i]}_${this.Values[i]}.svg`;
       imageElt.width = 125;
       imageElt.height = 175;
