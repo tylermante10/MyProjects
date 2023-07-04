@@ -32,95 +32,98 @@ class Master_deck {
             * 104 = Joker
             * 105 = Joker
             * */
-        this.suit = [];
+        let suit = [];
         for (let i = 0; i < Master_deck.NUM_SUITES; i++) {
           for (let j = 0; j < Master_deck.SUITES_PER_DECK; j++) {
             let index = (i * Master_deck.SUITES_PER_DECK) + j;
-            this.suit.push(index);
+            suit.push(index);
           }
-        this.suit.push(104);
-        this.suit.push(105);
+        suit.push(104);
+        suit.push(105);
         }
-        for(let i = 0; i < this.suit.length; i++){
-            if(this.suit[i] >= 0 && this.suit[i] <= 25){
-                this.suit[i] = "Spades";
-            } else if(this.suit[i] >= 26 && this.suit[i] <= 51){
-                this.suit[i] = "Clubs";
+        for(let i = 0; i < suit.length; i++){
+            if(suit[i] >= 0 && suit[i] <= 25){
+                suit[i] = "Spades";
+            } else if(suit[i] >= 26 && suit[i] <= 51){
+                suit[i] = "Clubs";
             }
-            else if(this.suit[i] >= 52 && this.suit[i] <= 77){
-                this.suit[i] = "Hearts";
+            else if(suit[i] >= 52 && suit[i] <= 77){
+                suit[i] = "Hearts";
             }
-            else if(this.suit[i] >= 78 && this.suit[i] <= 103){
-                this.suit[i] = "Diamonds";
+            else if(suit[i] >= 78 && suit[i] <= 103){
+                suit[i] = "Diamonds";
             }
-            else if(this.suit[i] == 104){
-                this.suit[i] = "Joker";
+            else if(suit[i] == 104){
+                suit[i] = "Joker";
             }
-            else if(this.suit[i] == 105){
-                this.suit[i] = "Joker";
+            else if(suit[i] == 105){
+                suit[i] = "Joker";
             }
         }
+        return suit;
     }
 
     define_value(){
         this.card_map = new Map();
+        let suit = this.define_suit();
+        let element = 0;
         let card_key = 0;
         let suite_ct = 0;
         this.card_map.set(104, "Joker");
         this.card_map.set(105, "Joker");
         while (suite_ct < Master_deck.NUM_SUITES) {
-            let suit = this.suit[suite_ct];
-            this.card_map.set(card_key, ("A of " + suit));
+            element = suit[suite_ct];
+            this.card_map.set(card_key, ("A of " + element));
             card_key++;
-            this.card_map.set(card_key, ("A of " + suit));
+            this.card_map.set(card_key, ("A of " + element));
             card_key++;
-            this.card_map.set(card_key, "2 of " + suit);
+            this.card_map.set(card_key, "2 of " + element);
             card_key++;
-            this.card_map.set(card_key, "3 of " + suit);
+            this.card_map.set(card_key, "3 of " + element);
             card_key++;
-            this.card_map.set(card_key, "4 of " + suit);
+            this.card_map.set(card_key, "4 of " + element);
             card_key++;
-            this.card_map.set(card_key, "5 of " + suit);
+            this.card_map.set(card_key, "5 of " + element);
             card_key++;
-            this.card_map.set(card_key, "6 of " + suit);
+            this.card_map.set(card_key, "6 of " + element);
             card_key++;
-            this.card_map.set(card_key, "7 of " + suit);
+            this.card_map.set(card_key, "7 of " + element);
             card_key++;
-            this.card_map.set(card_key, "8 of " + suit);
+            this.card_map.set(card_key, "8 of " + element);
             card_key++;
-            this.card_map.set(card_key, "9 of " + suit);
+            this.card_map.set(card_key, "9 of " + element);
             card_key++;
-            this.card_map.set(card_key, "10 of " + suit);
+            this.card_map.set(card_key, "10 of " + element);
             card_key++;
-            this.card_map.set(card_key, "J of " + suit);
+            this.card_map.set(card_key, "J of " + element);
             card_key++;
-            this.card_map.set(card_key, "2 of " + suit);
+            this.card_map.set(card_key, "2 of " + element);
             card_key++;
-            this.card_map.set(card_key, "3 of " + suit);
+            this.card_map.set(card_key, "3 of " + element);
             card_key++;
-            this.card_map.set(card_key, "4 of " + suit);
+            this.card_map.set(card_key, "4 of " + element);
             card_key++;
-            this.card_map.set(card_key, "5 of " + suit);
+            this.card_map.set(card_key, "5 of " + element);
             card_key++;
-            this.card_map.set(card_key, "6 of " + suit);
+            this.card_map.set(card_key, "6 of " + element);
             card_key++;
-            this.card_map.set(card_key, "7 of " + suit);
+            this.card_map.set(card_key, "7 of " + element);
             card_key++;
-            this.card_map.set(card_key, "8 of " + suit);
+            this.card_map.set(card_key, "8 of " + element);
             card_key++;
-            this.card_map.set(card_key, "9 of " + suit);
+            this.card_map.set(card_key, "9 of " + element);
             card_key++;
-            this.card_map.set(card_key, "10 of " + suit);
+            this.card_map.set(card_key, "10 of " + element);
             card_key++;
-            this.card_map.set(card_key, "J of " + suit);
+            this.card_map.set(card_key, "J of " + element);
             card_key++;
-            this.card_map.set(card_key, "Q of " + suit);
+            this.card_map.set(card_key, "Q of " + element);
             card_key++;
-            this.card_map.set(card_key, "Q of " + suit);
+            this.card_map.set(card_key, "Q of " + element);
             card_key++;
-            this.card_map.set(card_key, "K of " + suit);
+            this.card_map.set(card_key, "K of " + element);
             card_key++;
-            this.card_map.set(card_key, "K of " + suit);
+            this.card_map.set(card_key, "K of " + element);
             card_key++;
             suite_ct++;
             }
@@ -134,3 +137,4 @@ class Master_deck {
 Master_deck = new Master_deck();
 Master_deck.define_suit();
 Master_deck.define_value();
+Master_deck.print_card_map();
