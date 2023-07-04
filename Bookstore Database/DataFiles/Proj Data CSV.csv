@@ -1,0 +1,109 @@
+ISBN,Title,Author,Publisher,Year,Price,Category,,Store_ID,Pub_ID,Stock,,,Publisher,PublisherID
+321125169,ColdFusion MX Web Application Construction Kit,Ben Forta,Macromedia Press,2002,38.49,Computer,,30812,7,150,,,Sybex,1
+805317554,Fundamentals of Database Systems ,Ramez A. Elmasri,Addison-Wesley Publishing,1999,95,Computer,,30812,8,494,,,McGraw-Hill Osborne Media,2
+1861004486,Professional SQL Server 2000 Programming,Rob Vieira,Wrox Press Inc,2000,41.99,Computer,,30812,9,287,,,John Wiley & Sons,3
+972263608,Creating Documents with BusinessObjects 5.1,Robert D. Schmidt,"Schmidt Ink, Inc.",2002,99,Computer,,30812,5,32,,,Morgan Kaufmann,4
+201615762,The Guru's Guide to Transact-SQL,Ken Henderson,Addison-Wesley Pub Co,2000,38.49,Computer,,30812,6,27,,,"Schmidt Ink, Inc.",5
+782140114,Access 2002 Developer's Handbook Set,Paul Litwin,Sybex,2001,69.99,Computer,,30812,1,130,,,Addison-Wesley Pub Co,6
+72227885,SQL Server 2000 for Experienced DBA's,Brian Knight,McGraw-Hill Osborne Media,2003,34.99,Computer,,49012,2,109,,,Macromedia Press,7
+471200247,The Data Warehouse Toolkit: The Complete Guide to Dimensional Modeling,Ralph Kimball,John Wiley & Sons,2002,50,Computer,,49025,3,104,,,Addison-Wesley Publishing,8
+72227710,How To Do Everything with Your Tablet PC,Bill Mann,McGraw-Hill Osborne Media,2003,17.49,Computer,,49038,2,142,,,Wrox Press Inc,9
+1558605525,Data Mining: Practical Machine Learning Tools and Techniques with Java Implementations,Ian H. Witten,Morgan Kaufmann,1999,49.95,Computer,,49051,4,376,,,Berkley Pub Group,10
+735712123,MySQL,Paul DuBois,Addison-Wesley Publishing,2003,34.99,Computer,,49064,8,473,,,Penguin USA ,11
+425188361,Cerulean Sins,Laurell K. Hamilton ,Berkley Pub Group,2003,16.07,Literature & Fiction,,49077,10,110,,,O'Reilly & Associates,12
+142001740,The Secret Life of Bees,Sue Monk Kidd,Penguin USA ,2003,14,Literature & Fiction,,49090,11,38,,,McGraw-Hill Trade,13
+596004478,Google Hacks,Tara Calishain,O'Reilly & Associates,2003,24.95,Computer,,49103,12,385,,,Picador,14
+71414339,"Investing in Fixer-Uppers : A Complete Guide to Buying Low, Fixing Smart, Adding Value, and Selling (or Renting) High",Jay P. Decima ,McGraw-Hill Trade,2003,18.95,Accounting & Finance,,49116,13,14,,,St. Martin's Press,15
+312311354,The Pianist,Wladyslaw Szpilman,Picador,2003,13,Literature & Fiction,,49129,14,415,,,Crown Pub,16
+312287941,The Girl in the Red Coat: A Memoir,Roma Ligocka,St. Martin's Press,2002,25.95,Literature & Fiction,,49142,15,414,,,Little Brown & Company,17
+312243022,The Hours,Michael Cunningham,Picador,2000,3.44,Literature & Fiction,,49155,14,363,,,Simon & Schuster,18
+609610570,Execution: The Discipline of Getting Things Done,Larry Bossidy,Crown Pub,2002,27.5,Reference,,49168,16,467,,,HarperCollins,19
+316602051,The Jester,James Patterson,Little Brown & Company,2003,27.95,Literature & Fiction,,49181,17,452,,,Jossey-Bass,20
+743222008,The Vanished Man: A Lincoln Rhyme Novel,Jeffery Deaver,Simon & Schuster,2003,25,Literature & Fiction,,49194,18,363,,,Multnomah Publishers Inc.,21
+66214750,Twelve Times Blessed,Jacquelyn Mitchard,HarperCollins,2003,25.95,Literature & Fiction,,49207,19,433,,,Perennial,22
+787960756,The Five Dysfunctions of a Team: A Leadership Fable,Patrick Lencioni,Jossey-Bass,2002,13.2,Accounting & Finance,,49220,20,87,,,Dell Pub Co,23
+743206061,The Second Time Around,Mary Higgins Clark,Simon & Schuster,2003,26,Accounting & Finance,,49233,18,366,,,Harlequin,24
+1590520734,The Rescuer: The O'Malley Series,Dee Henderson,Multnomah Publishers Inc.,2003,12.99,Romance,,49012,21,255,,,Viking Press,25
+60934417,Bel Canto: A Novel,Ann Patchett,Perennial,2002,13.95,Romance,,49012,22,35,,,Perseus Publishing,26
+440237556,The Dark Highlander,Karen Marie Moning,Dell Pub Co,2002,6.99,Romance,,49012,23,65,,,Random House,27
+373272839,Letters to Kelly,Suzanne Brockmann,Harlequin,2003,4.75,Romance,,49012,24,156,,,Knopf,28
+670031518,The Blank Slate: The Modern Denial of Human Nature,Steven Pinker,Viking Press,2002,27.95,Science,,49012,25,325,,,"Wolfram Media, Inc.",29
+738206679,Linked: The New Science of Networks,Albert-L szl¢ Barab si ,Perseus Publishing,2002,26,Science,,49012,26,392,,,Fireside,30
+067976867X,Consilience: The Unity of Knowledge,Edward Osborne Wilson ,Random House,1999,15,Science,,49012,27,372,,,Random House Trade Paperbacks,31
+679450785,The Future of Life,Edward Osborne Wilson ,Knopf,2002,22,Science,,49012,28,107,,,Gibbs Smith Publisher,32
+1579550088,A New Kind of Science,Stephen Wolfram ,"Wolfram Media, Inc.",2002,44.95,Science,,49012,29,43,,,Taunton Pr,33
+684843285,ON FOOD AND COOKING,Harold McGee,Fireside,1997,22,Science,,49012,30,172,,,Vendome Pr,34
+471358983,Building Construction Illustrated,Francis D. K. Ching,John Wiley & Sons,2000,40,Home Design,,49012,3,292,,,Clarkson N. Potter,35
+394739698,A Field Guide to American Houses,Virginia McAlester,Random House Trade Paperbacks,1984,24.95,Home Design,,49012,31,419,,,MIT Press,36
+1586851322,Prefab,Bryan Burkhart,Gibbs Smith Publisher,2002,39.95,Home Design,,49012,32,293,,,McGraw-Hill/Irwin,37
+1586851357,Cabins & Camps,Ralph R. Kylloe ,Gibbs Smith Publisher,2002,60,Home Design,,49012,32,222,,,South-Western College Pub,38
+156158648X,The New City Home: Smart Solutions for Metro Living,Leslie Plummer Clagett ,Taunton Pr,2003,24.95,Home Design,,49012,33,325,,,Prentice Hall,39
+865659982,Composers' Houses,Gerard Gefen,Vendome Pr,1998,50,Home Design,,49012,34,404,,,Warner Books,40
+517576600,Color: Natural Palettes for Painted Rooms,Donald Kaufman,Clarkson N. Potter,1992,50,Home Design,,49012,35,102,,,Scribner,41
+262024829,Financial Modeling ,"Simon Benninga, Benjamin Czaczkes ",MIT Press,2000,70,Accounting & Finance,,49012,36,371,,,Pocket Books,42
+72294337,Financial Markets & Corporate Strategy,Mark Grinblatt,McGraw-Hill/Irwin,2001,122.5,Accounting & Finance,,49012,37,424,,,Pantheon Books,43
+72315318,Analysis for Financial Management,Robert C. Higgins ,McGraw-Hill/Irwin,2000,79.2,Accounting & Finance,,49012,37,467,,,Del Rey,44
+324107501,Advanced Accounting,Paul Marcus Fischer,South-Western College Pub,2001,112.95,Accounting & Finance,,49012,38,387,,,Doubleday,45
+471363049,Intermediate Accounting,Donald E. Kieso,John Wiley & Sons,2001,139.2,Accounting & Finance,,49012,3,461,,,"Donald M. Grant Publisher, Inc.",46
+130323519,Financial Reporting and Analysis ,Lawrence Revsine,Prentice Hall,2001,126.67,Accounting & Finance,,49012,39,439,,,Vintage Books,47
+446527793,The Guardian,Nicholas Sparks ,Warner Books,2003,24.95,Literature & Fiction,,49012,40,153,,,Scribner Paperback Fiction,48
+743206061,The Second Time Around,Mary Higgins Clark ,Simon & Schuster,2003,26,Literature & Fiction,,49012,18,388,,,Harvest Books,49
+743244249,Cosmopolis: A Novel,Don DeLillo,Scribner,2003,25,Literature & Fiction,,49012,41,418,,,Harperperennial Library,50
+743467523,Dreamcatcher,Stephen King,Pocket Books,2003,7.99,Horror,,49012,42,91,,,W.W. Norton & Company,51
+375703764,House of Leaves,Mark Z. Danielewski ,Pantheon Books,2000,19.95,Horror,,49012,43,489,,,Harvard Univ Pr,52
+345452089,The Vampire's Violin,Michael Romkey ,Del Rey,2003,6.99,Horror,,49012,44,52,,,Prentice Hall PTR,53
+385504470,Lullaby: A Novel,Chuck Palahniuk ,Doubleday,2002,17.47,Horror,,49012,45,296,,,New Riders Publishing,54
+312276702,Jinn: A Novel,Matthew Delaney,St. Martin's Press,2003,24.95,Horror,,49012,15,195,,,Ballantine Books ,55
+743457358,Everything's Eventual: 14 Dark Tales,Stephen King,Pocket Books,2002,7.99,Horror,,49012,42,260,,,Ballantine Books,56
+1880418568,Wolves of the Calla ,Stephen King,"Donald M. Grant Publisher, Inc.",2003,35,Horror,,49012,46,471,,,Back Bay Books,57
+743455967,On Writing,Stephen King ,Pocket Books,2002,7.99,Horror,,50157,42,334,,,Anchor Books,58
+140077022,White Noise ,Don DeLillo,Penguin USA ,1991,14,Literature & Fiction,,50157,11,424,,,Putnam Pub Group,59
+679722955,The Names,Don DeLillo ,Vintage Books,1989,11.2,Literature & Fiction,,50157,47,147,,,Silhouette,60
+684848155,UNDERWORLD: A NOVEL,Don DeLillo ,Scribner Paperback Fiction,1998,16,Literature & Fiction,,50157,48,393,,,Lark Books,61
+471286168,"Architecture: Form, Space, and Order",Francis D. K. Ching,John Wiley & Sons,1996,39.95,Home Design,,50157,3,489,,,Harper,62
+471288217,A Visual Dictionary of Architecture,Francis D. K. Ching,John Wiley & Sons,1996,39.95,Home Design,,50157,3,45,,,,
+156006219,The Magician's Assistant,Ann Patchett ,Harvest Books,1998,13,Romance,,50157,49,162,,,,
+60540753,Patron Saint of Liars,Ann Patchett ,Harperperennial Library,2003,13.95,Romance,,50157,50,236,,,,
+393318486,How the Mind Works,Steven Pinker ,W.W. Norton & Company,1999,17.95,Science,,50157,51,368,,,,
+60958332,The Language Instinct: How the Mind Creates Language,Steven Pinker ,Perennial,2000,10.5,Science,,50157,22,407,,,,
+60958405,Words and Rules: The Ingredients of Language,Steven Pinker ,Perennial,2000,15,Science,,50157,22,453,,,,
+393319407,The Diversity of Life,Edward Osborne Wilson ,W.W. Norton & Company,1999,16.95,Science,,50157,51,233,,,,
+067463442X,On Human Nature,Edward Osborne Wilson ,Harvard Univ Pr,1988,18.95,Science,,50157,52,496,,,,
+446608955,A Walk to Remember,Nicholas Sparks ,Warner Books,2000,6.99,Literature & Fiction,,50157,40,472,,,,
+446676098,The Notebook,Nicholas Sparks ,Warner Books,1999,12.95,Literature & Fiction,,50157,40,417,,,,
+446606812,Message in a Bottle,Nicholas Sparks ,Warner Books,1999,7.5,Literature & Fiction,,50157,40,412,,,,
+262521415,Numerical Techniques in Finance,Simon Benninga ,MIT Press,1989,35,Accounting & Finance,,50157,36,138,,,,
+262232197,Econometric Analysis of Cross Section and Panel Data,Jeffrey M. Wooldridge ,MIT Press,2001,74.95,Accounting & Finance,,50157,36,425,,,,
+324113641,Introductory Econometrics: A Modern Approach,Jeffrey M. Wooldridge ,South-Western College Pub,2002,107.95,Accounting & Finance,,81801,38,384,,,,
+471391123,Beyond Coso : Internal Control to Enhance Corporate Governance,Steven J. Root ,John Wiley & Sons,2000,50,Accounting & Finance,,81801,3,70,,,,
+130998516,Real World FPGA Design with Verilog,Ken Coffman ,Prentice Hall PTR,1999,83,Computer,,81801,53,112,,,,
+1565924916,Ldap System Administration,Gerald Carter ,O'Reilly & Associates,2003,39.95,Computer,,81801,12,412,,,,
+735712360,The Photoshop Book for Digital Photographers,Scott Kelby ,New Riders Publishing,2003,39.99,Computer,,81801,54,308,,,,
+735712379,Photoshop 7 Down & Dirty Tricks,Scott Kelby ,New Riders Publishing,2002,39.99,Computer,,81801,54,157,,,,
+735713170,Mac OS X v. 10.2 Jaguar Killer Tips,Scott Kelby ,New Riders Publishing,2002,29.99,Computer,,81801,54,106,,,,
+1558606432,Persuasive Technology: Using Computers to Change What We Think and Do,B. J. Fogg ,Morgan Kaufmann,2002,34.95,Computer,,81801,4,361,,,,
+72222743,A+ Certification All-in-One Exam Guide,Michael Meyers ,McGraw-Hill Osborne Media,2002,59.99,Computer,,81801,2,253,,,,
+345409469,The Demon-Haunted World: Science As a Candle in the Dark,Carl Sagan ,Ballantine Books ,1997,14.95,Science,,81801,55,400,,,,
+375508325,Cosmos,Carl Sagan ,Random House,2002,35,Science,,81801,27,271,,,,
+345336895,Broca's Brain: Reflections on the Romance of Science,Carl Sagan ,Ballantine Books,1993,6.99,Science,,81801,56,240,,,,
+671004107,Contact,Carl Sagan ,Pocket Books,1997,7.99,Science,,81801,42,51,,,,
+345376595,Pale Blue Dot: A Vision of the Human Future in Space,Carl Sagan ,Ballantine Books ,1997,12.95,Science,,81801,55,244,,,,
+316666343,The Lovely Bones: A Novel,Alice Sebold ,Little Brown & Company,2002,21.95,Literature & Fiction,,81801,17,245,,,,
+316096199,Lucky: A Memoir,Alice Sebold,Back Bay Books,2002,11.95,Literature & Fiction,,81801,57,35,,,,
+038572179X,Atonement,Ian McEwan ,Anchor Books,2003,14,Literature & Fiction,,81801,58,167,,,,
+385494246,Amsterdam,Ian McEwan ,Anchor Books,1999,12,Literature & Fiction,,81801,58,408,,,,
+385494327,Black Dogs,Ian McEwan ,Anchor Books,1999,14,Literature & Fiction,,81801,58,451,,,,
+385494149,Enduring Love,Ian McEwan ,Anchor Books,1999,13,Literature & Fiction,,81801,58,361,,,,
+399149848,Birthright,Nora Roberts ,Putnam Pub Group,2003,25.95,Literature & Fiction,,81801,59,67,,,,
+373218192,Engaging The Enemy,Nora Roberts ,Silhouette,2003,7.5,Literature & Fiction,,81801,60,226,,,,
+373218257,Love By Design,Nora Roberts ,Harlequin,2003,14.95,Literature & Fiction,,81801,24,236,,,,
+399149392,Chesapeake Blue,Nora Roberts ,Putnam Pub Group,2002,25.95,Literature & Fiction,,81801,59,303,,,,
+1561584029,The Complete Illustrated Guide to Furniture and Cabinet Construction,Andy Rae ,Taunton Pr,2001,39.95,Home Design,,81801,33,341,,,,
+1579902944,Choosing & Using Hand Tools,Andy Rae ,Lark Books,2002,19.95,Home Design,,81801,61,341,,,,
+1561586196,Building a Shed,Joseph Truini ,Taunton Pr,2003,19.95,Home Design,,81801,33,417,,,,
+61092177,Small Gods,Terry Pratchett,Harper,1994,7.99,Fantasy,,81801,62,346,,,,
+60502935,Going Postal,Terry Pratchett,Harper,2005,7.99,Fantasy,,81801,62,286,,,,
+61020656,Pyramids,Terry Pratchett,Harper,2001,7.99,Fantasy,,81801,62,382,,,,
+60855925,The Color of Magic,Terry Pratchett,Harper,2005,13.99,Fantasy,,81801,62,31,,,,
+61020648,Guards! Guards!,Terry Pratchett,Harper,2001,7.99,Fantasy,,81801,62,268,,,,
+61161721,Unseen Academicals,Terry Pratchett,Harper,2010,7.99,Fantasy,,81801,62,335,,,,

@@ -401,6 +401,12 @@ public final class Hands_Ruleset_Movforward {
         int[][] players = deal_cards(master_deck, players_total);
         Map<Integer, String> card_map = card_map();
         show_hands(players, player_me, card_map);
+        /*
+         * TODO: 1. draw_card function 2. Define all points of user input 3.
+         * Define game point metric (hand # like quarter # in football) 4.
+         * Define hand 6-15 5.Define functions to handle a "put down" attempt
+         * e.g. (hand 6 -> total = 6, is_set(set1), is_set(set2))
+         */
 
         /*
          * Get player me set up- input the cards they have as a number
@@ -479,6 +485,8 @@ public final class Hands_Ruleset_Movforward {
         boolean is_approved_set = isSet(players, player_me, arr_set_objs);
         if (is_approved_set == true) {
             System.out.printf("This is a set!%n");
+            System.out.println("Enter another set:");
+
         } else {
             System.out.println("You suck!");
         }
