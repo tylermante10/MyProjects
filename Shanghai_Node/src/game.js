@@ -25,7 +25,7 @@ class Create_shuffled_shanghai_deck{
 
 
     constructor(){
-        this.deck = [];
+        this.suites_container = [];
         let suites_filled = false;
         let j = 0;
         for (let i = 0; i < 4; i++){
@@ -34,8 +34,9 @@ class Create_shuffled_shanghai_deck{
                     j = 0;
                     suites_filled = true;
                 };
+                j++;
                 let card = `${this.Values[j]} of ${this.SUITES[i]}`
-                this.deck.push(card);
+                this.suites_container.push(suites_container[i][card]);
             }
         }
         }
