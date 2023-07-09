@@ -64,73 +64,79 @@ class Master_deck {
     }
 
     define_value(){
+        let suites = [];
+        suites[0] = "Spade";
+        suites[1] = "Club";
+        suites[2] = "Hearts";
+        suites[3] = "Diamonds";
         this.card_map = new Map();
-        let suit = this.define_suit();
         let element = 0;
         let card_key = 0;
         let suite_ct = 0;
+        let suit = suites[suite_ct];
         this.card_map.set(104, "Joker");
         this.card_map.set(105, "Joker");
         while (suite_ct < Master_deck.NUM_SUITES) {
-            element = suit[suite_ct];
-            this.card_map.set(card_key, ("A of " + element));
+            console.log(suite_ct);
+            suit = suites[suite_ct];
+            this.card_map.set(card_key, ("A of " + suit));
             card_key++;
-            this.card_map.set(card_key, ("A of " + element));
+            this.card_map.set(card_key, ("A of " + suit));
             card_key++;
-            this.card_map.set(card_key, "2 of " + element);
+            this.card_map.set(card_key, "2 of " + suit);
             card_key++;
-            this.card_map.set(card_key, "3 of " + element);
+            this.card_map.set(card_key, "3 of " + suit);
             card_key++;
-            this.card_map.set(card_key, "4 of " + element);
+            this.card_map.set(card_key, "4 of " + suit);
             card_key++;
-            this.card_map.set(card_key, "5 of " + element);
+            this.card_map.set(card_key, "5 of " + suit);
             card_key++;
-            this.card_map.set(card_key, "6 of " + element);
+            this.card_map.set(card_key, "6 of " + suit);
             card_key++;
-            this.card_map.set(card_key, "7 of " + element);
+            this.card_map.set(card_key, "7 of " + suit);
             card_key++;
-            this.card_map.set(card_key, "8 of " + element);
+            this.card_map.set(card_key, "8 of " + suit);
             card_key++;
-            this.card_map.set(card_key, "9 of " + element);
+            this.card_map.set(card_key, "9 of " + suit);
             card_key++;
-            this.card_map.set(card_key, "10 of " + element);
+            this.card_map.set(card_key, "10 of " + suit);
             card_key++;
-            this.card_map.set(card_key, "J of " + element);
+            this.card_map.set(card_key, "J of " + suit);
             card_key++;
-            this.card_map.set(card_key, "2 of " + element);
+            this.card_map.set(card_key, "2 of " + suit);
             card_key++;
-            this.card_map.set(card_key, "3 of " + element);
+            this.card_map.set(card_key, "3 of " + suit);
             card_key++;
-            this.card_map.set(card_key, "4 of " + element);
+            this.card_map.set(card_key, "4 of " + suit);
             card_key++;
-            this.card_map.set(card_key, "5 of " + element);
+            this.card_map.set(card_key, "5 of " + suit);
             card_key++;
-            this.card_map.set(card_key, "6 of " + element);
+            this.card_map.set(card_key, "6 of " + suit);
             card_key++;
-            this.card_map.set(card_key, "7 of " + element);
+            this.card_map.set(card_key, "7 of " + suit);
             card_key++;
-            this.card_map.set(card_key, "8 of " + element);
+            this.card_map.set(card_key, "8 of " + suit);
             card_key++;
-            this.card_map.set(card_key, "9 of " + element);
+            this.card_map.set(card_key, "9 of " + suit);
             card_key++;
-            this.card_map.set(card_key, "10 of " + element);
+            this.card_map.set(card_key, "10 of " + suit);
             card_key++;
-            this.card_map.set(card_key, "J of " + element);
+            this.card_map.set(card_key, "J of " + suit);
             card_key++;
-            this.card_map.set(card_key, "Q of " + element);
+            this.card_map.set(card_key, "Q of " + suit);
             card_key++;
-            this.card_map.set(card_key, "Q of " + element);
+            this.card_map.set(card_key, "Q of " + suit);
             card_key++;
-            this.card_map.set(card_key, "K of " + element);
+            this.card_map.set(card_key, "K of " + suit);
             card_key++;
-            this.card_map.set(card_key, "K of " + element);
+            this.card_map.set(card_key, "K of " + suit);
             card_key++;
             suite_ct++;
             }
         }
         print_card_map(){
-            for(const element of this.card_map){
-                console.log(element);
+            for(const elm of this.card_map){
+                console.log(elm);
             }
         }
     }
