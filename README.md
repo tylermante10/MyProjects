@@ -1,2 +1,2 @@
-# school_projects
-Projects Completed for School Classes (Expanded)
+# My Projects
+Projects Completed in Spare Time 
